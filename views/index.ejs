@@ -7,10 +7,13 @@
     var _title = {
         "en" : "Litecoin - Open source P2P digital currency",
         "fr" : "Litecoin - Monnaie électronique décentralisée et open source",
+        "es" : "Litecoin - La moneda electrónica",
+        "pt" : "Litecoin - A moeda digital",
         "it" : "Litecoin - Valuta digitale P2P Open source",
         "de" : "Litecoin - Open Source P2P Internetwährung",
         "ru" : "Litecoin - Электронная Валюта",
-        "zh" : "Litecoin - 开源P2P电子货币"
+        "zh_HANS" : "Litecoin - 开源P2P电子货币",
+        "zh_HANT" : " Litecoin - 開源P2P電子貨幣",
     }
 
     var _copyright = {
@@ -18,10 +21,12 @@
         "fr" : "Copyright &copy; 2013 Litecoin Developers (Dévelopeurs Litecoin). Tous droits réservés.",
         "es" : "Copyright &copy; 2013 Desarrolladores Litecoin. Todos los derechos reservados.",
         "pt" : "Copyright &copy; 2013 Desenvolvedores Litecoin. Todos os direitos reservados.",
-        "zh" : "&copy; 2013 Litecoin开发者版权所有，并保留所有权利。",
+        "zh_HANS" : "&copy; 2013 Litecoin开发者版权所有，并保留所有权利。",
+        "zh_HANT" : "",
         "it" : "Copyright &copy; 2013 Litecoin Developers. Tutti i Diritti Riservati.",
         "ru" : "Все права защищены © 2009-2013 Разработчики Litecoin",
         "de" : "Copyright &copy; 2013 Litecoin Developers. All rights reserved.",
+        "jp" : "Copyright &copy; 2013 Litecoin Developers. All rights reserved.",
     }
 
     var _hosted_by = {
@@ -29,10 +34,12 @@
         "fr" : "Hébérgé par",
         "es" : "Patrocinado por",
         "pt" : "Suportado por",
-        "zh" : "托管网站",
+        "zh_HANS" : "托管网站",
+        "zh_HANT" : "",
         "it" : "Ospitato da",
         "ru" : "Хостинг предоставлен компанией",
         "de" : "Hosted by",
+        "jp" : "日本語"
     }
 
     var _download = {
@@ -40,10 +47,12 @@
         "fr":"TÉLÉCHARGER",
         "es":"DESCARGAR",
         "pt":"DESCARREGAR",
-        "zh":"下载",
+        "zh_HANS":"下载",
+        "zh_HANT":"下载",
         "it":"SCARICARE",
         "ru":"ЗАГРУЗИТЬ",
         "de":"DOWNLOAD",
+        "jp":"ダウンロード",
     }
 
     var _for_windows = {
@@ -51,10 +60,12 @@
         "fr":"pour Windows",
         "es":"para Windows",
         "pt":"para Windows",
-        "zh":"供Windows使用",
+        "zh_HANS":"供Windows使用",
+        "zh_HANT":"供Windows使用",
         "it":"per Windows",
         "ru":"для Windows",
         "de":"für Windows",
+        "jp":"Windows ダウンロード用",
     }
 
     var _for_linux = {
@@ -62,10 +73,12 @@
         "fr":"pour GNU/Linux",
         "es":"para GNU/Linux",
         "pt":"para GNU/Linux",
-        "zh":"供GNU/Linux使用",
+        "zh_HANS":"供GNU/Linux使用",
+        "zh_HANT":"供GNU/Linux使用",
         "it":"per GNU/Linux",
         "ru":"для GNU/Linux",
         "de":"für GNU/Linux",
+        "jp":"GNU/Linux ダウンロード用",
     }
 
     var _for_osx = {
@@ -73,10 +86,12 @@
         "fr":"pour Mac OS X",
         "es":"para Mac OS X",
         "pt":"para Mac OS X",
-        "zh":"供Mac OS X使用",
+        "zh_HANS":"供Mac OS X使用",
+        "zh_HANT":"供Mac OS X使用",
         "it":"per Mac OS X",
         "ru":"для Mac OS X",
         "de":"für Mac OS X",
+        "jp":"Mac OS X ダウンロード用",
     }
 
     var _browse_more_downloads = {
@@ -84,10 +99,12 @@
         "fr":"Autres téléchargements...",
         "es":"Ver más descargas...",
         "pt":"Procurar mais downloads...",
-        "zh":"浏览更多可下载内容……",
+        "zh_HANS":"浏览更多可下载内容……",
+        "zh_HANT":"流覽更多可下載內容……",
         "it":"Sfoglia per scaricare altro...",
         "ru":"Другие загрузки...",
         "de":"Mehr downloads...",
+        "jp":"続きを見る…",
     }
 
     //# due to change of intro text amount, we adjust features or downloads top margin
@@ -99,18 +116,26 @@
     if(locale == 'es')
         _features_margin_top = 10;
     else
-    if(locale == 'zh') {
+    if(locale == 'zh_HANS' || locale == 'zh_HANT') {
         _downloads_margin_top = 60;
-        _features_margin_top = 60;
+        _features_margin_top = 40;
     }
     else
     if(locale == 'fr') {
         _features_margin_top = 10;
     }
+    else
+    if(locale == 'jp') {
+        _downloads_margin_top = 56;
+        _features_margin_top = 36;
+    }
+
 
     var locale_menu = "";
     for(var code in languages) {
         var caption = languages[code];
+        if(code == "jp")
+            continue;
         if(code == locale)
             locale_menu += "<span class='current'>"+caption + "</span> &nbsp;&nbsp;";
         else
@@ -121,10 +146,12 @@
     }
 
     var _styles = ""
-    if(locale == 'zh') {
+    if(locale == 'zh_HANS' || locale == 'zh_HANT') {
         _styles = ".first-column h1, .second-column h1, .third-column h1  { font-weight: normal; font-size: 24px; margin-top: 8px; margin-bottom: 30px; }";
     } else if(locale == 'fr') {
         _styles = "#pager {  background: url(images/top_bg_extended.png) repeat-x; }";
+    } else if(locale == 'jp') {
+        _styles = ".first-column h1, .second-column h1, .third-column h1  { font-weight: normal; font-size: 24px; margin-top: 8px; margin-bottom: 30px; }";
     }
 
     _styles += "@media screen { #downloads { margin-top:"+_downloads_margin_top+"px; } }";
@@ -207,12 +234,19 @@
                         <p/>
                         Um dos objetivos da Litecoin era fornecer um algoritmo de mineração que fosse executado ao mesmo tempo e no mesmo hardware usado para minerar bitcoins. Com o acréscimo dos ASICs especializados para Bitcoin, Litecoin continua satisfazendo estes objetivos. É improvável para a mineração de FPGA ou ASIC serem desenvolvidas para Litecoin, até que a moeda for amplamente utilizada.
                     </h2>
-                <% } else if (locale == 'zh') { %>
+                <% } else if (locale == 'zh_HANS') { %>
                     <h1>什么是Litecoin？</h1>
                     <h2>
-                        Litecoin是一种基于“点对点”(peer-to-peer)技术的网络货币，它可以帮助您即时付款给世界上任何一个人。它基于比特币(Bitcoin)协议，但不同于比特币的地方在于，通过消费级的硬件也可以高效地“挖矿”。Litecoin提供给您更快速的交易确认（平均2.5分钟），它使用硬内存以及基于scrypt(一种加密算法)的挖矿工作量证明算法，面向大多数人使用的普通计算机及图形处理器(GPU)。Litecoin网络预期将生产8400万个货币单位。
+                        Litecoin(中文译名：莱特币)是一种基于“点对点”(peer-to-peer)技术的网络货币，它可以帮助您即时付款给世界上任何一个人。它基于比特币(Bitcoin)协议，但不同于比特币的地方在于，通过消费级的硬件也可以高效地“挖矿”。Litecoin提供给您更快速的交易确认（平均2.5分钟），它使用硬内存以及基于scrypt(一种加密算法)的挖矿工作量证明算法，面向大多数人使用的普通计算机及图形处理器(GPU)。Litecoin网络预期将生产8400万个货币单位。
                         <p/>
                         Litecoin的设计目的之一是提供一种挖掘算法，使它能够在挖掘比特币的机器上被同时运行。为挖掘比特币而设计的专用集成电路(ASIC)逐渐兴起的同时，Litecoin也紧跟着技术演变。但在Litecoin货币被广泛应用之前，不太可能会出现专门为Litecoin设计的专用集成电路(ASIC)。
+                    </h2>
+                <% } else if (locale == 'zh_HANT') { %>
+                    <h1>什麼是Litecoin？</h1>
+                    <h2>
+                        Litecoin（中文译名：莱特币）是一種基於“點對點”(peer-to-peer)技術的網路貨幣，它可以説明您即時付款給世界上任何一個人。它基於比特幣(Bitcoin)協議，但不同於比特幣的地方在於，通過消費級的硬體也可以高效地“挖礦”。Litecoin提供給您更快速的交易確認（平均2.5分鐘），它使用硬記憶體以及基於scrypt(一種加密演算法)的挖礦工作量證明演算法，面向大多數人使用的普通電腦及圖形處理器(GPU)。Litecoin網路預期將生產8400萬個貨幣單位。
+                        <p/>
+                        Litecoin的設計目的之一是提供一種挖掘演算法，使它能夠在挖掘比特幣的機器上被同時運行。為挖掘比特幣而設計的專用積體電路(ASIC)逐漸興起的同時，Litecoin也緊跟著技術演變。但在Litecoin貨幣被廣泛應用之前，不太可能會出現專門為Litecoin設計的專用積體電路(ASIC)。
                     </h2>
                 <% } else if (locale == 'it') { %>
                     <h1>Che cos’è Litecoin?</h1>
@@ -239,6 +273,13 @@
                         <p/>
                         Eines der Ziele von Litecoin ist es, Mining-Algorithmen zur Verfügung zu stellen, die zur selben Zeit und auf derselben Hardware laufen können, die auch zum minen von Bitcoins verwendet wird. Während für das Mining von Bitcoins immer häufiger hochspezialisierte ASICs verwendet werden, erfüllen Litecoins weiterhin diesen Anspruch. Dass ASIC Mining für Litecoin entwickelt wird ist eher unwahrscheinlich solange die Währung nicht weiter verbreitet ist.
                     </h2> 
+                <% } else if (locale == 'jp') { %>
+                    <h1>Litecoinとは？</h1>
+                    <h2>
+                        Litecoinは、世界中の誰に対してもすぐに支払えるP2Pの仮想通貨です。Bitcoinプロトコルに基づいていますが、一般のハードウェアを用いて効率的に採掘できるという点でBitcoinと異なります。Litecoinは素早い取引認証（平均2分半）を実現し、多くの人が所有している一般コンピュータとGPUをターゲットにするメモリーハード、スクリプトベースの採掘Proof-of-Work アルゴリズムを採用しています。Litecoinネットワークは840万まで通貨単位を生成する予定です。
+                        <p/>
+                        Litecoinの目的は、Bitcoinの採掘に使用する同じハードウェアで、同時に実行できる採掘アルゴリズムを提供することです。Bitcoinに特化したASICが増えれば、Litcoinも目標達成に近づいていいきます。ASIC採掘がLitecoinによって発展するようになるのは、Litecoinが広く流通してからになるでしょう。
+                    </h2>
                 <% } else if (locale == '') { %>
                     <h1></h1>
                     <h2>
@@ -261,13 +302,17 @@
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Los códigos fuente disponibles en GitHub</a>
                 <% } else if(locale == 'pt') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Os códigos fonte disponíveis em GitHub</a>
-                <% } else if(locale == 'zh') { %>
+                <% } else if(locale == 'zh_HANS') { %>
+                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
+                <% } else if(locale == 'zh_HANT') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
                 <% } else if(locale == 'it') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Il codice sorgente di Litecoin-QT su GitHub</a>
                 <% } else if(locale == 'ru') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Исходный код Litecoin-Qt на GitHub</a>
                 <% } else if(locale == 'de') { %>
+                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
+                <% } else if(locale == 'jp') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
                 <% } else if(locale == '') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
@@ -329,7 +374,7 @@
                                 <li>Participar nos canais da <a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode:</a> <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (para usuários em geral) y <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (para desenvolvedores).</li>
                             </ul>
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>社区</h1>
                         <h2>
                             您可以从很多日益壮大的Litecoin社区中寻求技术支持，例如：
@@ -339,6 +384,17 @@
                                 <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">搜索Twitter上的用户</a></li>
 
                                 <li>加入<a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode</a>网络频道<a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a>(面向普通用户)，<a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a>(面向开发者)</li>
+                            </ul>
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>社區</h1>
+                        <h2>
+                            您可以從很多日益壯大的Litecoin社區中尋求技術支援，例如：
+                            <ul>
+                                <li><a href="http://forum.litecoin.net" target="_blank">Litecoin論壇</a></li>
+                                <li><a href="http://www.reddit.com/r/litecoin" target="_blank">Litecoin交易社區</a></li>
+                                <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">搜索Twitter上的用戶</a></li>
+                                <li>加入<a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode</a>網路頻道<a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a>(面向普通用戶)，<a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a>(面向開發者)</li>
                             </ul>
                         </h2>
                     <% } else if(locale == 'it') { %>
@@ -373,6 +429,17 @@
                                 </a><li><a>Trete </a><a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode Netword</a> bei, <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (für normale User) und <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (für Entwickler).</li> 
                             </ul> 
                         </h2> 
+                    <% } else if(locale == 'jp') { %>
+                        <h1>コミュニティ</h1>
+                        <h2>
+                            サポートを提供しているLitecoinコミュニティは多数存在します。次のサイトを訪問してみてください：
+                            <ul>
+                                <li><a href="http://forum.litecoin.net" target="_blank">Litecoinフォーラム</a></li>
+                                <li><a href="http://www.reddit.com/r/litecoin" target="_blank">Litecoin Redditコミュニティ</a></li>
+                                <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">Twitterでユーザーを検索<a/></li>
+                                <li>IRC FreeNode ネットワークチャンネルに参加 <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> （一般ユーザー向け）・ <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a>（開発者向け）</li>                                
+                            </ul>
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -417,7 +484,7 @@
                             <p/>
                             Os códigos fonte Litecoin e outros projetos relacionados encontram-se disponíveis em: <a href="https://github.com/litecoin-project" target="_blank">GitHub.com/litecoin-project</a>.
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>资源</h1>
                         <h2>
                             查看<a href="https://github.com/litecoin-project/litecoin/wiki" target="_blank">Litecoin维基</a>，可以获取Litecoin的相关信息，以及查看所有支持Litecoin的网站列表以及交易市场。
@@ -425,6 +492,15 @@
                             查看<a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoin交易图表</a>，获取最新的网上交易数据。
                             <p/>
                             访问<a href="https://github.com/litecoin-project" target="_blank">GitHub.com/litecoin-project</a>，获取Litecoin的源代码及相关项目。
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>資源</h1>
+                        <h2>
+                            查看<a href="https://github.com/litecoin-project/litecoin/wiki" target="_blank">Litecoin維琪</a>，可以獲取Litecoin的相關資訊，以及查看所有支援Litecoin的網站清單以及交易市場。
+                            <p/>
+                            查看<a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoin交易圖表</a>，獲取最新的網上交易資料。
+                            <p/>
+                            訪問<a href="https://github.com/litecoin-project" target="_blank">GitHub.com/litecoin-project</a>，獲取Litecoin的原始程式碼及相關項目。
                         </h2>
                     <% } else if(locale == 'it') { %>
                         <h1>Risorse</h1>
@@ -454,6 +530,15 @@
                             <p/>
                             Der Litecoin Source Code und damit verbundene Projekte sind unter <a href="https://github.com/litecoin-project" target="_blank">GitHub.com/litecoin-project</a> abrufbar.
                         </h2>
+                    <% } else if(locale == 'jp') { %>
+                        <h1>リソース</h1>
+                        <h2>
+                            一般情報、Litecoinをサポートしているサイトと取引所のリストは、<a href="https://github.com/litecoin-project/litecoin/wiki" target="_blank">Litecoin Wiki</a>で見つけることができます。
+                            <p/>
+                            最新のネットワーク統計は、Litecoinブロックエクスプローラーチャートで見ることができます。
+                            <p/>
+                            <a href="https://github.com/litecoin-project" target="_blank">GitHub.com</a>またはLitecoinプロジェクトで、Litecoinのソースコードと関連プロジェクトを見ることができます。
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -482,12 +567,19 @@
                         <h2>
                             Litecoin é um projeto de software livre lançado sob a licença MIT/X11 que lhe oferece a liberdade de executar, modificar, copiar e distribuir o software, consoante o usuário, em cópias modificadas. O software é lançado num processo transparente que permite a verificação independente de binários e seu código fonte correspondente.
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>免费开源软件</h1>
                         <h2>
                             Litecoin是一款在MIT/X11许可下发布的免费软件项目，它让您能够根据自己的需要对软件进行运行、修改和复制。如果你愿意，你也可以发行软件的修改版本。
                             <p/>
                             该软件以完全透明的形式发布，用户可以对二进制版本以及对应源代码进行独立验证。
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>免費開源軟體</h1>
+                        <h2>
+                            Litecoin是一款在MIT/X11許可下發佈的免費軟體專案，它讓您能夠根據自己的需要對軟體進行運行、修改和複製。如果你願意，你也可以發行軟體的修改版本。
+                            <p/>
+                            該軟體以完全透明的形式發佈，使用者可以對二進位版本以及對應原始程式碼進行獨立驗證。
                         </h2>
                     <% } else if(locale == 'it') { %>
                         <h1>Software Gratuito Opensource</h1>
@@ -504,6 +596,11 @@
                         <h2>
                             Litecoin ist ein unter der MIT/X11 Lizenz laufendes Open Source Software Projekt. Das ermöglicht Ihnen die Software zu verwenden, sie zu verändern, zu kopieren oder veränderte Versionen der Software zu verbreiten. Der Release-Prozess der Software ist transparent und ermöglicht es, sowohl die Binärdateien als auch den Source Code einzusehen. 
                         </h2> 
+                    <% } else if(locale == 'jp') { %>
+                        <h1>フリーオープンソースソフトウェア</h1>
+                        <h2>
+                            LitecoinはMIT/X11ライセンスの下で公開されているフリーソフトウェアです。ライセンスによって、ソフトウェアの実行、修正、複製およびユーザーオプションで修正されたソフトウェアの複製を配布することができます。バイナリと対応するソースコードを独立検証できる透明なプロセスを通じてソフトウェアは配布されます。
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -540,12 +637,19 @@
                             <p/>
                             Em consequência, os comerciantes obtêm confirmações mais rápidas, enquanto ainda têm a capacidade de esperar por mais confirmações ao vender itens mais custosos.
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>数据块链</h1>
                         <h2>
                             Litecoin块链与其竞争对手——比特币比起来，能够处理更大的交易量。由于数据块的生成更加频繁，该网络可以支持更多的交易，并且无需在将来修改软件。
                             <p/>
                             因此，商家可以获得更快的交易确认，而且在销售大额商品时依然能够等待更多的交易确认。
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>資料塊鏈</h1>
+                        <h2>
+                            Litecoin塊鏈與其競爭對手——比特幣比起來，能夠處理更大的交易量。由於資料塊的生成更加頻繁，該網路可以支援更多的交易，並且無需在將來修改軟體。
+                            <p/>
+                            因此，商家可以獲得更快的交易確認，而且在銷售大額商品時依然能夠等待更多的交易確認。
                         </h2>
                     <% } else if(locale == 'it') { %>
                         <h1>Catena di blocchi</h1>
@@ -566,6 +670,13 @@
                             <p/>
                             Die benötigte Zeit um Händlern Bestätigungen zu übermitteln wird dadurch kürzer, die Möglichkeit auf mehr Bestätigungen zu warten um Tickets gebündelt zu verkaufen bleibt jedoch bestehen.  
                         </h2> 
+                    <% } else if(locale == 'jp') { %>
+                        <h1>Blockchain</h1>
+                        <h2>
+                            Litecoin blockchainは、類似サービスのBitcoinより多くのトランザクションを取り扱うことができます。より頻繁にブロックが生成されるため、ソフトウェアを将来的に改良する必要なく、ネットワークは多くのトランザクションに対応することができます。
+                            <p/>
+                            その結果、売買人も素早く認証を得ることができます。ただし金額の大きな商品を販売するときは、依然多くの認証を待たなければなりません。
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -601,12 +712,19 @@
                             <p/>
                             Isso serve não apenas como proteção para vírus e troianos, mas também como um controle de conformidade antes de enviar os pagamentos.
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>钱包加密</h1>
                         <h2>
                             钱包加密能够保证您钱包中私钥的安全，从而让您可以查看交易情况及账户余额，但是您在使用litecoin之前必须输入密码。
                             <p/>
                             该功能不仅能够防止病毒及木马的侵扰，同时还是付款前的一项有效的合法性检查。
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>錢包加密</h1>
+                        <h2>
+                            錢包加密能夠保證您錢包中私密金鑰的安全，從而讓您可以查看交易情況及帳戶餘額，但是您在使用litecoin之前必須輸入密碼。
+                            <p/>
+                            該功能不僅能夠防止病毒及木馬的侵擾，同時還是付款前的一項有效的合法性檢查。
                         </h2>
                     <% } else if(locale == 'it') { %>
                         <h1>Cifratura del Portafoglio</h1>
@@ -629,6 +747,13 @@
                             <p/>
                             Dieser Schritt dient nicht nur der Vorbeugung von Angriffen durch Viren oder Trojaner, sondern soll den Vorgang des Bezahlens auch zu einem bewusst getätigtem Schritt machen.
                          </h2>
+                    <% } else if(locale == 'jp') { %>
+                        <h1>ウォレットの暗号化</h1>
+                        <h2>
+                            ウォレットの暗号化によって、ウォレットのプライベートキーの安全性を確保し、取引やアカウント残高を確認することができます。Litecoinを使用する前にパスワードの入力が必要となります。
+                            <p/>
+                            この認証によって、ウイルスやスパムから保護できるだけでなく、支払い実行前に安全性を確認することができます。
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -665,13 +790,20 @@
                             <p/>
                             Portanto, a rede Litecoin é projetada para produzir cerca de 4 vezes o número de unidades do que Bitcoin, ou cerca de 84 milhões de litecoins.
                         </h2>
-                    <% } else if(locale == 'zh') { %>
+                    <% } else if(locale == 'zh_HANS') { %>
                         <h1>奖励</h1>
                         <h2>
                             “矿工们”起初每数据块可以产出50个币。每4年，生产的货币量将减少一半(840000个数据块)。
                             <p/>
                             因此，Litecoin网络生产的货币总量将大约是比特币的4倍，即8400万个litecoin。
-                        </h2>                    
+                        </h2>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <h1>獎勵</h1>
+                        <h2>
+                            “礦工們”起初每資料塊可以產出50個幣。每4年，生產的貨幣量將減少一半(840000個資料塊)。
+                            <p/>
+                            因此，Litecoin網路生產的貨幣總量將大約是比特幣的4倍，即8400萬個litecoin。
+                        </h2>
                     <% } else if(locale == 'it') { %>
                         <h1>Ricompensa</h1>
                         <h2>
@@ -695,6 +827,13 @@
                             <p/> 
                             Alles in allem werden dadurch 4 mal mehr litecoins als bitcoins generiert (gesamt 84 Millionen Litecoins).
                         </h2> 
+                    <% } else if(locale == 'jp') { %>
+                        <h1>リワード</h1>
+                        <h2>
+                            採掘はブロックごとに50コインを生成します。コインの総量は4年ごとに半減します（840,000ブロック）。
+                            <p/>
+                            したがって、Litecoinネットワークは、Bitcoinのおおよそ4倍の量の通貨、約840万Litecoinを生成する予定です。
+                        </h2>
                     <% } else if(locale == '') { %>
                         <h1></h1>
                         <h2>
@@ -713,15 +852,18 @@
                 Usted puede contactarse con el equipo de desarrollo Litecoin en: <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.
             <% } else if(locale == 'pt') { %>
                 Você pode entrar em contato com a equipe de desenvolvimento da Litecoin em: <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.
-            <% } else if(locale == 'zh') { %>
+            <% } else if(locale == 'zh_HANS') { %>
                 您可以通过<a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>联系Litecoin的开发团队。
+            <% } else if(locale == 'zh_HANT') { %>
+                您可以通過<a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>聯繫Litecoin的開發團隊。
             <% } else if(locale == 'it') { %>
                 Potete contattare il team degli sviluppatori di Litecoin all'indirizzo di posta elettronica <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.
             <% } else if(locale == 'ru') { %>
                 Вы можете связаться с разработчиками проекта Litecoin по электронной почте: <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.
             <% } else if(locale == 'de') { %>
                 Für Presseanfragen wenden Sie sich bitte an das Litecoin Entwicklungsteam (<a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a> bzw.).
-
+            <% } else if(locale == 'jp') { %>
+                Litecoin開発チームへのお問い合わせは <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>。
             <% } else if(locale == '') { %>
             <% } %>
 
