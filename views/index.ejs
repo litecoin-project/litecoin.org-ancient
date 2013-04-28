@@ -117,8 +117,8 @@
         _features_margin_top = 10;
     else
     if(locale == 'zh_HANS' || locale == 'zh_HANT') {
-        _downloads_margin_top = 60;
-        _features_margin_top = 40;
+        _downloads_margin_top = 20;
+        _features_margin_top = 30;
     }
     else
     if(locale == 'fr') {
@@ -147,12 +147,13 @@
 
     var _styles = ""
     if(locale == 'zh_HANS' || locale == 'zh_HANT') {
-        _styles = ".first-column h1, .second-column h1, .third-column h1  { font-weight: normal; font-size: 24px; margin-top: 8px; margin-bottom: 30px; }";
+        _styles = ".first-column h1, .second-column h1, .third-column h1  { font-weight: normal; font-size: 24px; margin-top: 8px; margin-bottom: 30px; } .first-column h2, .second-column h2, .third-column h2  { font-size: 16px; } #intro h2 { font-size: 18px; }";
     } else if(locale == 'fr') {
         _styles = "#pager {  background: url(images/top_bg_extended.png) repeat-x; }";
     } else if(locale == 'jp') {
         _styles = ".first-column h1, .second-column h1, .third-column h1  { font-weight: normal; font-size: 24px; margin-top: 8px; margin-bottom: 30px; }";
     }
+
 
     _styles += "@media screen { #downloads { margin-top:"+_downloads_margin_top+"px; } }";
     _styles += "@media screen { .features-offset { margin-top:"+_features_margin_top+"px; } }";
