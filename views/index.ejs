@@ -14,6 +14,7 @@
         "ru" : "Litecoin - Электронная Валюта",
         "zh_HANS" : "Litecoin - 开源P2P电子货币",
         "zh_HANT" : " Litecoin - 開源P2P電子貨幣",
+        "jp" : "Litecoin - オープンソースP2P仮想通貨",
     }
 
     var _copyright = {
@@ -117,7 +118,7 @@
         _features_margin_top = 10;
     else
     if(locale == 'zh_HANS' || locale == 'zh_HANT') {
-        _downloads_margin_top = 50;
+        _downloads_margin_top = 56;
         _features_margin_top = 50;
     }
     else
@@ -277,9 +278,9 @@
                 <% } else if (locale == 'jp') { %>
                     <h1>Litecoinとは？</h1>
                     <h2>
-                        Litecoinは、世界中の誰に対してもすぐに支払えるP2Pの仮想通貨です。Bitcoinプロトコルに基づいていますが、一般のハードウェアを用いて効率的に採掘できるという点でBitcoinと異なります。Litecoinは素早い取引認証（平均2分半）を実現し、多くの人が所有している一般コンピュータとGPUをターゲットにするメモリーハード、スクリプトベースの採掘Proof-of-Work アルゴリズムを採用しています。Litecoinネットワークは840万まで通貨単位を生成する予定です。
+                        Litecoinは、世界中の誰に対してもすぐに支払えるP2Pの仮想通貨です。Bitcoinプロトコルに基づいていますが、一般のハードウェアを用いて効率的にデータマイニングできるという点でBitcoinと異なります。Litecoinは素早い取引認証（平均2分半）を実現し、多くの人が所有している一般コンピュータとGPUをターゲットにするメモリーハード、scryptベースのマイニングProof-of-Work アルゴリズムを採用しています。今後、Litecoinネットワークは840万まで通貨単位を生成する予定です。
                         <p/>
-                        Litecoinの目的は、Bitcoinの採掘に使用する同じハードウェアで、同時に実行できる採掘アルゴリズムを提供することです。Bitcoinに特化したASICが増えれば、Litcoinも目標達成に近づいていいきます。ASIC採掘がLitecoinによって発展するようになるのは、Litecoinが広く流通してからになるでしょう。
+                        Litecoinの目的は、Bitcoinのマイニングに使用する同じハードウェアで、同時に実行できるマイニングアルゴリズムを提供することです。Bitcoinに特化したASICが増えれば、Litcoinも目標達成に近づいていきます。ASICマイニングがLitecoinによって発展するようになるのは、Litecoinが広く流通してからになるでしょう。
                     </h2>
                 <% } else if (locale == '') { %>
                     <h1></h1>
@@ -536,7 +537,7 @@
                         <h2>
                             一般情報、Litecoinをサポートしているサイトと取引所のリストは、<a href="https://github.com/litecoin-project/litecoin/wiki" target="_blank">Litecoin Wiki</a>で見つけることができます。
                             <p/>
-                            最新のネットワーク統計は、Litecoinブロックエクスプローラーチャートで見ることができます。
+                            最新のネットワーク統計は、<a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoinブロックエクスプローラーチャート</a>で見ることができます。
                             <p/>
                             <a href="https://github.com/litecoin-project" target="_blank">GitHub.com</a>またはLitecoinプロジェクトで、Litecoinのソースコードと関連プロジェクトを見ることができます。
                         </h2>
