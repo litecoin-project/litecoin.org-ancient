@@ -135,8 +135,6 @@
     var locale_menu = "";
     for(var code in languages) {
         var caption = languages[code];
-        if(code == "jp")
-            continue;
         if(code == locale)
             locale_menu += "<span class='current'>"+caption + "</span> &nbsp;&nbsp;";
         else
@@ -315,7 +313,7 @@
                 <% } else if(locale == 'de') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
                 <% } else if(locale == 'jp') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
+                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>GitHubでのLitecoin-Qtソースコード</a>
                 <% } else if(locale == '') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
                 <% } %>
