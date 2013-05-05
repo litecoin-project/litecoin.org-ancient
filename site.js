@@ -47,7 +47,14 @@ function Application() {
 
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
-        res.render('index.ejs', { self : self, languages : languages, locale : 'en' });
+        res.render('index.ejs', { self : self, languages : languages, locale : 'en' }, function(err, html) {
+            if(err) {
+                res.end("<meta http-equiv=\"refresh\" content=\"2\">");
+                process.exit(1);
+            }
+
+            res.end(html);
+        });
     });
 
     var lang = [ ]
@@ -73,8 +80,10 @@ function Application() {
                 return res.end(cache[locale_code]);
 
             res.render('index.ejs', { self : self, languages : languages, locale : locale_code }, function(err, html) {
-                if(err)
+                if(err) {
                     res.end(err);
+                    process.exit(1);
+                }
                 cache[locale_code] = html;
                 res.end(html);
             });
