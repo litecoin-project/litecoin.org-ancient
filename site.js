@@ -134,3 +134,6 @@ function Application() {
 }
 
 GLOBAL.app = new Application();
+
+// temporary fix for a problem with file handle accumulation
+setInterval(function(){ process.exit(0); }, 1000 * 60 * 60 * 24);
