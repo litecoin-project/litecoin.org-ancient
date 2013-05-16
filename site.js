@@ -23,7 +23,7 @@ var languages = {
     'ru' : 'Русский',
     'zh_HANS' : '中文',
     'zh_HANT' : '繁體中文',
-    'jp' : '日本語',
+    'ja' : '日本語',
 }
 
 function dpc(t,fn) { if(typeof(t) == 'function') setTimeout(t,0); else setTimeout(fn,t); }
