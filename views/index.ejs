@@ -11,7 +11,7 @@
         "pt" : "Litecoin - A moeda digital",
         "it" : "Litecoin - Valuta digitale P2P Open source",
         "de" : "Litecoin - Open Source P2P Internetwährung",
-        "gr" : "Litecoin - Ανοικτού Κώδικα P2P ψηφιακό νόμισμα",
+        "gr" : "Litecoin - Ψηφιακό Νόμισμα P2P  Ανοικτού Κώδικα",
         "ru" : "Litecoin - Электронная Валюта",
         "zh_HANS" : "Litecoin - 开源P2P电子货币",
         "zh_HANT" : " Litecoin - 開源P2P電子貨幣",
@@ -138,7 +138,11 @@
         _downloads_margin_top = 56;
         _features_margin_top = 36;
     }
-
+    else
+    if(locale == 'gr') {
+        _downloads_margin_top = 0;
+        _features_margin_top = 36;
+    }
 
     var locale_menu = "";
     for(var code in languages) {
@@ -199,7 +203,7 @@
 </div>
 
 <div id="pager">
-	<div id="header">
+    <div id="header">
         <div id="language"><%- locale_menu %></div>
         <div class="alignleft"><img src="images/litecoin-logo-192.png" class="logo" alt="Litecoin Logo"/></div>
         <div class="alignright">
@@ -210,7 +214,7 @@
     
     <div class="wrapper">
     
-    	<div id="right">
+        <div id="right">
             <div id="intro">
                 <% if(locale == 'en') { %>
                     <h1>What is Litecoin?</h1>
@@ -281,12 +285,12 @@
                         <p/>
                         Eines der Ziele von Litecoin ist es, Mining-Algorithmen zur Verfügung zu stellen, die zur selben Zeit und auf derselben Hardware laufen können, die auch zum minen von Bitcoins verwendet wird. Während für das Mining von Bitcoins immer häufiger hochspezialisierte ASICs verwendet werden, erfüllen Litecoins weiterhin diesen Anspruch. Dass ASIC Mining für Litecoin entwickelt wird ist eher unwahrscheinlich solange die Währung nicht weiter verbreitet ist.
                     </h2> 
-                <% if(locale == 'gr') { %>
+                <% } else if(locale == 'gr') { %>
                     <h1> Τί είναι το Litecoin;</h1>
                     <h2>
-                        Το Litecoin είναι ένα P2P (peer-to-peer) διαδικτυακό νόμισμα το οποίο επιτρέπει στιγμιαίες συναλλαγές προς οποιοnδήποτε σε όλο τον κόσμο. Βασίζεται στο πρωτόκολλο του Bitcoin, αλλά διαφέρει από το Bitcoin στο γεγονός ότι μπορεί να εξορυχθεί αποδοτικά με μη εξεζητημένο hardware. Το Litecoin παρέχει γρηγορότερες επιβεβαιώσεις συναλλαγών (με μέσο όρο τα 2.5 λεπτά), βασίζεται στον απαιτητικό σε μνήμη scrypt αλγόριθμο εξόρυξης (για proof-of-work), στοχεύοντας σε υπολογιστές και κάρτες γραφικών (GPUs) που διαθέτουν οι περισσότεροι άνθρωποι. Το δίκτυο του Litecoin έχει προγραμματιστεί ώστε να παράγει 84 εκατομμύρια νομίσματα.
+                        Το Litecoin είναι ένα P2P (peer-to-peer) διαδικτυακό νόμισμα το οποίο επιτρέπει στιγμιαίες συναλλαγές προς οποιονδήποτε σε όλο τον κόσμο. Βασίζεται στο πρωτόκολλο του Bitcoin, αλλά διαφέρει από το Bitcoin στο γεγονός ότι μπορεί να εξορυχθεί αποδοτικά με μη εξεζητημένο υλικό - hardware. Το Litecoin παρέχει επίσης γρηγορότερες επιβεβαιώσεις συναλλαγών (με μέσο όρο τα 2.5 λεπτά), βασίζεται στον απαιτητικό σε μνήμη scrypt αλγόριθμο εξόρυξης (για proof-of-work) και στοχεύει σε υπολογιστές και κάρτες γραφικών που διαθέτουν οι περισσότεροι άνθρωποι. Το δίκτυο του Litecoin έχει προγραμματιστεί ώστε να παράγει 84 εκατομμύρια νομίσματα.
                         <p/>
-                        Ένας από τους στόχους του Litecoin ήταν το να παρέχει έναν αλγόριθμο εξόρυξης που θα μπορούσε να εκτελεστεί ταυτόχρονα, στο ίδιο hardware που χρησιμοποιούνταν για την παραγωγή bitcoins. Με την δημιουργία εξεζητημένων ASICs για το Bitcoin, το Litecoin εξακολουθεί να ικανοποιεί αυτόν τον στόχο. Είναι απίθανο να αναπτυχθούν μηχανήματα ASIC για το Litecoin έως ότου επεκταθεί περαιτέρω η χρήση του.
+                        Ένας από τους στόχους του Litecoin ήταν το να παρέχει έναν αλγόριθμο εξόρυξης που θα μπορούσε να εκτελεστεί ταυτόχρονα, με το ίδιο hardware που χρησιμοποιούνταν για την παραγωγή bitcoins. Με την δημιουργία εξεζητημένων ASICs για το Bitcoin, το Litecoin εξακολουθεί να ικανοποιεί αυτόν τον στόχο. Είναι απίθανο να αναπτυχθούν μηχανήματα ASIC για το Litecoin έως ότου επεκταθεί περαιτέρω η χρήση του.
                     </h2> 
                 <% } else if (locale == 'ja') { %>
                     <h1>Litecoinとは？</h1>
@@ -377,7 +381,7 @@
                                 <li><a href="http://www.reddit.com/r/litecoin" target="_blank">Comunidad Reddit de Litecoin</a></li>
                                 <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">Búsqueda de Usuarios en Twitter<a/></li>
                                 
-                                <li>Regístrese en los canales de la red <a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode:</a> <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (para los usuarios en general) y <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (para desarrolladores).</li>
+                                <li>Regístrese en los canales de la red <a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode:</a> <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (para los usuarios en general) y <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (para desarrolladores).</li>
                             </ul>
                         </h2>
                     <% } else if(locale == 'pt') { %>
@@ -564,7 +568,7 @@
                             <p/>
                             Ενημερωμένα στατιστικά δικτύου μπορούν να βρεθούν στο <a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoin Block Explorer Charts</a>.
                             <p/>
-                            Ο πηγαίος κώδικας για το Litecoin-Qt και για σχετικά projects είναι διαθέσιμος στο <a href="https://github.com/litecoin-project" target="_blank">GitHub</a>.
+                            Ο πηγαίος κώδικας για το Litecoin-Qt και σχετικά projects είναι διαθέσιμος στο <a href="https://github.com/litecoin-project" target="_blank">GitHub</a>.
                         </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>リソース</h1>
@@ -635,7 +639,7 @@
                     <% } else if(locale == 'gr') { %>
                         <h1>Ελεύθερο Λογισμικό Ανοικτού Κώδικα</h1> 
                         <h2>
-                            Το Litecoin είναι ένα λογισμικό ανοικτού κώδικα που υπάγεται στην MIT/X11 άδεια, η οποία σου δίνει την δύναμη να εκτελέσεις, να τροποποιήσεις, να αντιγράψεις το λογισμικό και να διανείμεις, κατ'επιλογή σου, τροποποιημένα αντίγραφα του λογισμικού. Το λογισμικό κυκλοφορεί με μία διαφανή διαδικασία που επιτρέπει την ανεξάρτητη πιστοποίηση των binaries αρχείων και τον αντίστοιχό τους πηγαίο κώδικα.
+                            Το Litecoin αποτελεί λογισμικό ανοικτού κώδικα και υπάγεται στην άδεια MIT/X11, η οποία επιτρέπει την εκτέλεση, τροποποίηση, αντιγραφή του λογισμικού και διανομή του, κατ'επιλογή σου. Το λογισμικό κυκλοφορεί με μία διαφανή διαδικασία που επιτρέπει την ανεξάρτητη πιστοποίηση των δυαδικών (binary) αρχείων και τον αντίστοιχο πηγαίο κώδικα.
                         </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>フリーオープンソースソフトウェア</h1>
@@ -714,7 +718,7 @@
                      <% } else if(locale == 'gr') { %>
                         <h1>Blockchain</h1>
                         <h2>
-                            H αλυσίδα των μπλοκ του Litecoin χειρίζεται υψηλότερο όγκο συναλλαγών σε σχέση με το ομόλογό του νόμισμα, το Bitcoin. Εξαιτίας της συχνότερης δημιουργίας των μπλοκ, το δίκτυο υποστηρίζει περισσότερες συναλλαγές, χωρίς να υπάρχει ανάγκη τροποποίησης του λογισμικού στο μέλλον. <p/>Σαν αποτέλεσμα, οι έμποροι αποκτούν βεβαιώσεις των συναλλαγών σε συντομότερο χρονικό διάστημα, ενώ ταυτόχρονα έχουν τη δυνατότητα να αναμένουν για περισσότερες επιβεβαιώσεις όταν πουλούν αντικείμενα με μεγαλύτερη περίοδο ισχύως.
+                            H αλυσίδα των μπλοκ του Litecoin χειρίζεται υψηλότερο όγκο συναλλαγών σε σχέση με το αντίστοιχό του νόμισμα, το Bitcoin. Εξαιτίας της συχνότερης δημιουργίας των μπλοκ, το δίκτυο υποστηρίζει περισσότερες συναλλαγές, χωρίς να υπάρχει ανάγκη τροποποίησης του λογισμικού στο μέλλον. <p/>Σαν αποτέλεσμα, οι έμποροι αποκτούν βεβαιώσεις των συναλλαγών σε συντομότερο χρονικό διάστημα, ενώ ταυτόχρονα έχουν τη δυνατότητα να αναμένουν για περισσότερες επιβεβαιώσεις όταν πουλούν αντικείμενα με μεγαλύτερη περίοδο ισχύως.
                         </h2>                        
                     <% } else if(locale == 'ja') { %>
                         <h1>Blockchain</h1>
@@ -881,7 +885,7 @@
                     <% } else if(locale == 'gr') { %>
                         <h1>Αμοιβή Εξόρυξης</h1>
                         <h2>
-                            Οι miners προς το παρόν αμοίβονται με 50 νέα litecoins ανά μπλοκ, ένα ποσό που μειώνεται στο μισό σχεδόν κάθε 4 έτη (κάθε 840,000 μπλοκ). 
+                            Οι συμμετέχοντες στην διαδικασία της εξόρυξης νομισμάτων (miners) προς το παρόν αμοίβονται με 50 νέα litecoins ανά μπλοκ, ένα ποσό που μειώνεται στο μισό σχεδόν κάθε 4 έτη (κάθε 840,000 μπλοκ). 
                             <p/>
                             Το δίκτυο του Litecoin είναι ως εκ τούτου προσχεδιασμένο να παράγει 84 εκατομμύρια litecoins, ένα σύνολο 4 φορές μεγαλύτερο από το αντίστοιχο του Bitcoin.
                         </h2>
@@ -943,8 +947,8 @@
         </div>
     </div>
     <div id="footer">
-    	<div class="wrapper">
-        	<div class="alignleft"><%= _copyright[locale] %></div><div class="alignright"> <%= _hosted_by[locale] %> <a href="http://www.litehosting.org" target="_blank">www.LiteHosting.org</a></div>
+        <div class="wrapper">
+            <div class="alignleft"><%= _copyright[locale] %></div><div class="alignright"> <%= _hosted_by[locale] %> <a href="http://www.litehosting.org" target="_blank">www.LiteHosting.org</a></div>
             <div class="alignright"></div>
         </div>
     </div>
