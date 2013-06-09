@@ -281,6 +281,13 @@
                         <p/>
                         Eines der Ziele von Litecoin ist es, Mining-Algorithmen zur Verfügung zu stellen, die zur selben Zeit und auf derselben Hardware laufen können, die auch zum minen von Bitcoins verwendet wird. Während für das Mining von Bitcoins immer häufiger hochspezialisierte ASICs verwendet werden, erfüllen Litecoins weiterhin diesen Anspruch. Dass ASIC Mining für Litecoin entwickelt wird ist eher unwahrscheinlich solange die Währung nicht weiter verbreitet ist.
                     </h2> 
+                <% if(locale == 'gr') { %>
+                    <h1> Τί είναι το Litecoin;</h1>
+                    <h2>
+                        Το Litecoin είναι ένα P2P (peer-to-peer) διαδικτυακό νόμισμα το οποίο επιτρέπει στιγμιαίες συναλλαγές προς οποιονδήποτε σε όλο τον κόσμο. Βασίζεται στο πρωτόκολλο του Bitcoin, αλλά διαφέρει από το Bitcoin στο γεγονός ότι μπορεί να εξορυχθεί αποδοτικά με hardware που δεν είναι εξεζητημένο. Το Litecoin παρέχει γρηγορότερες επιβεβαιώσεις συναλλαγών (με μέσο όρο τα 2.5 λεπτά), βασίζεται στον απαιτητικό σε μνήμη scrypt αλγόριθμο εξόρυξης (για proof-of-work), στοχεύοντας σε υπολογιστές και κάρτες γραφικών (GPUs) που διαθέτουν οι περισσότεροι άνθρωποι. Το δίκτυο του Litecoin έχει προγραμματιστεί ώστε να παράγει 84 εκατομμύρια νομίσματα.
+                        <p/>
+                        Ένας από τους στόχους του Litecoin ήταν το να παρέχει έναν αλγόριθμο εξόρυξης που θα μπορούσε να εκτελεστεί ταυτόχρονα, στο ίδιο hardware που χρησιμοποιούνταν για να παράγει bitcoins. Με την δημιουργία εξεζητημένων ASICs για το Bitcoin, το Litecoin εξακολουθεί να ικανοποιεί αυτόν τον στόχο. Είναι απίθανο να αναπτυχθούν μηχανήματα ASIC για το Litecoin έως ότου επεκταθεί περαιτέρω η χρήση του.
+                    </h2> 
                 <% } else if (locale == 'ja') { %>
                     <h1>Litecoinとは？</h1>
                     <h2>
@@ -319,7 +326,9 @@
                 <% } else if(locale == 'ru') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Исходный код Litecoin-Qt на GitHub</a>
                 <% } else if(locale == 'de') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
+                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>             
+                <% } else if(locale == 'gr') { %>
+                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt πηγαίος κώδικας στο GitHub</a>
                 <% } else if(locale == 'ja') { %>
                     <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>GitHubでのLitecoin-Qtソースコード</a>
                 <% } else if(locale == '') { %>
@@ -437,6 +446,16 @@
                                 </a><li><a>Trete </a><a href="http://freenode.net/" target="_blank" rel="nofollow">IRC FreeNode Netword</a> bei, <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (für normale User) und <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (für Entwickler).</li> 
                             </ul> 
                         </h2> 
+                     <% } else if(locale == 'gr') { %>
+                        <h1>Κοινότητα</h1>
+                        <h2>Βρείτε υποστήριξη σε έναν συνεχώς αυξανόμενο αριθμό κοινοτήτων για το Litecoin:
+                            <ul>
+                                <li><a href="http://forum.litecoin.net" target="_blank">Επίσημο Litecoin Φόρουμ</a></li>
+                                <li><a href="http://www.reddit.com/r/litecoin" target="_blank">Litecoin στο Reddit</a></li>
+                                <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">Αναζήτηση για χρήστες στο Twitter<a/></li>
+                                <li>IRC FreeNode δικτυακά κανάλια <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (για απλούς χρήστες) και <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (για developers).</li>
+                            </ul>
+                        </h2>                    
                     <% } else if(locale == 'ja') { %>
                         <h1>コミュニティ</h1>
                         <h2>
@@ -538,6 +557,15 @@
                             <p/>
                             Der Litecoin Source Code und damit verbundene Projekte sind unter <a href="https://github.com/litecoin-project" target="_blank">GitHub.com/litecoin-project</a> abrufbar.
                         </h2>
+                    <% } else if(locale == 'gr') { %>
+                        <h1>Πηγές</h1>
+                        <h2>
+                            Βρείτε γενικές πληροφορίες, καθώς επίσης και μία λίστα υπηρεσιών και ανταλλακτηρίων που υποστηρίζουν το Litecoin στο <a href="http://litecoin.info" target="_blank">Litecoin Wiki</a>.
+                            <p/>
+                            Ενημερωμένα στατιστικά δικτύου μπορούν να βρεθούν στο <a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoin Block Explorer Charts</a>.
+                            <p/>
+                            Ο πηγαίος κώδικας για το Litecoin-Qt και για σχετικά projects είναι διαθέσιμος στο <a href="https://github.com/litecoin-project" target="_blank">GitHub</a>.
+                        </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>リソース</h1>
                         <h2>
@@ -604,6 +632,11 @@
                         <h2>
                             Litecoin ist ein unter der MIT/X11 Lizenz laufendes Open Source Software Projekt. Das ermöglicht Ihnen die Software zu verwenden, sie zu verändern, zu kopieren oder veränderte Versionen der Software zu verbreiten. Der Release-Prozess der Software ist transparent und ermöglicht es, sowohl die Binärdateien als auch den Source Code einzusehen. 
                         </h2> 
+                    <% } else if(locale == 'gr') { %>
+                        <h1>Ελεύθερο Λογισμικό Ανοικτού Κώδικα</h1> 
+                        <h2>
+                            Το Litecoin είναι ένα λογισμικό ανοικτού κώδικα που υπάγεται στην MIT/X11 άδεια, η οποία σου δίνει την δύναμη να εκτελέσεις, να τροποποιήσεις, να αντιγράψεις το λογισμικό και να διανείμεις, κατ'επιλογή σου, τροποποιημένα αντίγραφα του λογισμικού. Το λογισμικό κυκλοφορεί με μία διαφανή διαδικασία που επιτρέπει την ανεξάρτητη πιστοποίηση των binaries αρχείων και τον αντίστοιχό τους πηγαίο κώδικα.
+                        </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>フリーオープンソースソフトウェア</h1>
                         <h2>
@@ -678,6 +711,11 @@
                             <p/>
                             Die benötigte Zeit um Händlern Bestätigungen zu übermitteln wird dadurch kürzer, die Möglichkeit auf mehr Bestätigungen zu warten um Tickets gebündelt zu verkaufen bleibt jedoch bestehen.  
                         </h2> 
+                     <% } else if(locale == 'gr') { %>
+                        <h1>Blockchain</h1>
+                        <h2>
+                            H αλυσίδα των μπλοκ του Litecoin χειρίζεται υψηλότερο όγκο συναλλαγών σε σχέση με το ομόλογό του, το Bitcoin. Εξαιτίας της συχνότερης δημιουργίας των μπλοκ, το δίκτυο υποστηρίζει περισσότερες συναλλαγές, χωρίς να υπάρχει ανάγκη τροποποίησης του λογισμικού στο μέλλον. <p/>Σαν αποτέλεσμα, οι έμποροι αποκτούν βεβαιώσεις των συναλλαγών σε συντομότερο χρονικό διάστημα, ενώ ταυτόχρονα έχουν τη δυνατότητα να αναμένουν για περισσότερες επιβεβαιώσεις όταν πουλούν αντικείμενα με μεγαλύτερη περίοδο ισχύως.
+                        </h2>                        
                     <% } else if(locale == 'ja') { %>
                         <h1>Blockchain</h1>
                         <h2>
@@ -755,6 +793,11 @@
                             <p/>
                             Dieser Schritt dient nicht nur der Vorbeugung von Angriffen durch Viren oder Trojaner, sondern soll den Vorgang des Bezahlens auch zu einem bewusst getätigtem Schritt machen.
                          </h2>
+                    <% } else if(locale == 'gr') { %>
+                        <h1>Κρυπτογράφηση Πορτοφολιού</h1>
+                        <h2>
+                            Με την κρυπτογράφηση του πορτοφολιού σας μπορείτε να διασφαλίσετε το πορτοφόλι σας, ώστε να βλέπετε τις συναλλαγές και το υπόλοιπό σας, αλλά να απαιτείται η είσοδος κωδικού προτού ξοδεύσετε litecoins. <p/>Αυτό σας προστατεύει από ιούς που στοχεύουν στο να κλέψουν το πορτοφόλι σας, από trojans, και γενικότερα λειτουργεί σαν ένας επιπρόσθετος έλεγχος για ασφάλεια πριν την κάθε πληρωμή.
+                        </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>ウォレットの暗号化</h1>
                         <h2>
@@ -835,6 +878,13 @@
                             <p/> 
                             Alles in allem werden dadurch 4 mal mehr litecoins als bitcoins generiert (gesamt 84 Millionen Litecoins).
                         </h2> 
+                    <% } else if(locale == 'gr') { %>
+                        <h1>Αμοιβή Εξόρυξης</h1>
+                        <h2>
+                            Οι Miners προς το παρόν αμοίβονται με 50 νέα litecoins ανά μπλοκ, ένα ποσό που μειώνεται στο μισό σχεδόν κάθε 4 έτη (κάθε 840,000 μπλοκ). 
+                            <p/>
+                            Το δίκτυο του Litecoin είναι ως εκ τούτου προσχεδιασμένο να παράγει 84 εκατομμύρια litecoins, ένα σύνολο 4 φορές μεγαλύτερο από το αντίστοιχο του Bitcoin.
+                        </h2>
                     <% } else if(locale == 'ja') { %>
                         <h1>リワード</h1>
                         <h2>
@@ -870,6 +920,8 @@
                 Вы можете связаться с разработчиками проекта Litecoin по электронной почте: <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.
             <% } else if(locale == 'de') { %>
                 Für Presseanfragen wenden Sie sich bitte an das Litecoin Entwicklungsteam (<a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a> bzw.).
+            <% } else if(locale == 'gr') { %>
+                Μπορείτε να επικοινωνήσετε με την ομάδα ανάπτυξης του Litecoin στο <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>.          
             <% } else if(locale == 'ja') { %>
                 Litecoin開発チームへのお問い合わせは <a href="mailto:contact@litecoin.org" target="_blank">contact@litecoin.org</a>。
             <% } else if(locale == '') { %>
