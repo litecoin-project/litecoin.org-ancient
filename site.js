@@ -20,6 +20,7 @@ var languages = {
     'pt' : 'Português',
     'it' : 'Italiano',
     'de' : 'Deutsch',
+    'gr' : 'Ελληνικά',
     'ru' : 'Русский',
     'zh_HANS' : '中文',
     'zh_HANT' : '繁體中文',
