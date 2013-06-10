@@ -10,7 +10,7 @@ var os = require('os'),
     https = require('https'),
     _ = require('underscore');
 
-var HTTP_PORT = 80;
+var HTTP_PORT = 8080;
 var ENABLE_CACHE = os.hostname() == "litehosting" ? true : false;
 
 var languages = {
