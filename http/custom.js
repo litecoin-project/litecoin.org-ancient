@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2013 Litecoin Developers
+// Copyright (c) 2013 Litecoin Project
 //
 
 __locale = null;
@@ -22,26 +22,26 @@ jQuery(document).ready(function($) {
 
 	$('.alignright img').tipsy({fade: true});
 
-	function scroller(anc) {  
-	    target = $(anc);  
-	    $('html, body').animate({  
-	        scrollTop: target.offset().top  
-	    }, 1000);  
+	var images = [	"images/linux-send.png", 
+					"images/linux-receive.png", 
+					"images/linux-transactions.png", 
+					"images/linux-main.png" ];
+	
+	var alt = 0;
+	var freq = 8000;
+	var t = 1500;
+
+	function crossfade() {
+		var next = images.shift();
+		images.push(next);
+		var cls_current = '.screen-'+alt;
+		alt = alt ^ 1;
+		var cls_next = '.screen-'+alt;
+
+		$(cls_next).attr('src', next);
+		$(cls_next).animate({opacity: 1.0}, t / 2, 'linear');
+		$(cls_current).animate({opacity: 0.0}, t, 'linear');
 	}
 
-	$(".viewall").click(function() {  
-	    scroller(".features");  
-	});
-
-	$('#images a img').first().addClass("active");
-	$('#images a').click(function(e){
-		image = $(this);
-		e.preventDefault();
-		$('.screenshot').stop().animate({opacity:0.5}, 250, function() {
-			$(this).attr('src',image.attr('href'));
-		});
-		$('.screenshot').animate({opacity:1}, 500);
-		$('#images img').removeClass("active");
-		image.find("img").addClass("active");
-	});
+	setInterval(crossfade, freq);
 });
