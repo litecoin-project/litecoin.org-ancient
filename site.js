@@ -5,13 +5,14 @@
 //
 
 var os = require('os'),
+    exec = require('child_process').exec,
     express = require('express'),
     http = require('http'),
     https = require('https'),
     _ = require('underscore');
 
 var HTTP_PORT = 80;
-var ENABLE_CACHE = os.hostname() == "litehosting" ? true : false;
+var ENABLE_CACHE = os.hostname() == "sif" ? true : false;
 
 var languages = {
     'en' : 'English',
@@ -126,9 +127,28 @@ function Application() {
             });
         });
 
-
         console.log("HTTP server listening on port: ",HTTP_PORT);
-        http.createServer(app).listen(HTTP_PORT);
+        http.createServer(app).listen(HTTP_PORT, function() {
+            secure();
+        });
+    }
+
+    function secure() {
+        if(process.platform != 'win32') {
+            try {
+                exec('id -u litecoin', function(err, stdout, stderr) {
+                    if(!err) {
+                        var uid = parseInt(stdout);
+                        if(uid) {
+                            console.log('Setting process UID to:',uid);
+                            process.setuid(uid);
+                        }
+                    }
+                });
+            } catch(ex) {
+                console.error(ex);
+            }
+        }
     }
 
     digest_language_handler();
