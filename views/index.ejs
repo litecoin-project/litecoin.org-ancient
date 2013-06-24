@@ -307,46 +307,59 @@
             </div>
             <div id="downloads" class="downloads-offset">
 
-                <a class="download" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_windows[locale] %></a>
+                <div class="download">
+                    <a class="download-link" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_windows[locale] %></a>
+                    <a class="GPG" href="/"><div class="GPG-text">GPG Signature</div></a>
+                </div>
 
-                <a class="download" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-linux.tar.gz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_linux[locale] %></a>
+                <div class="download">
+                    <a class="download-link" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-linux.tar.gz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_linux[locale] %></a>
+                    <a class="GPG" href="/"><div class="GPG-text">GPG Signature</div></a>
+                </div>
                 
-                <a class="download" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-macosx.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_osx[locale] %></a>
+                <div class="download">
+                    <a class="download-link" href="https://github.com/downloads/litecoin-project/litecoin/litecoin-0.6.3c-macosx.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.3c<br/><%= _for_osx[locale] %></a>
+                    <a class="GPG" href="/"><div class="GPG-text">GPG Signature</div></a>
+                </div>
 
-                <% if(locale == 'en') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
-                <% } else if(locale == 'fr') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Code source de Litecoin-Qt sur GitHub</a>
-                <% } else if(locale == 'es') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Los códigos fuente disponibles en GitHub</a>
-                <% } else if(locale == 'pt') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Os códigos fonte disponíveis em GitHub</a>
-                <% } else if(locale == 'zh_HANS') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
-                <% } else if(locale == 'zh_HANT') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
-                <% } else if(locale == 'it') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Il codice sorgente di Litecoin-QT su GitHub</a>
-                <% } else if(locale == 'ru') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Исходный код Litecoin-Qt на GitHub</a>
-                <% } else if(locale == 'de') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>             
-                <% } else if(locale == 'el') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt πηγαίος κώδικας στο GitHub</a>
-                <% } else if(locale == 'ja') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>GitHubでのLitecoin-Qtソースコード</a>
-                <% } else if(locale == '') { %>
-                    <a class="download" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
-                <% } %>
-
+                <div class="download github">
+                    <% if(locale == 'en') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
+                    <% } else if(locale == 'fr') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Code source de Litecoin-Qt sur GitHub</a>
+                    <% } else if(locale == 'es') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Los códigos fuente disponibles en GitHub</a>
+                    <% } else if(locale == 'pt') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Os códigos fonte disponíveis em GitHub</a>
+                    <% } else if(locale == 'zh_HANS') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
+                    <% } else if(locale == 'zh_HANT') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>登录GitHub，获取Litecoin的源代码及相关项目。</a>
+                    <% } else if(locale == 'it') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Il codice sorgente di Litecoin-QT su GitHub</a>
+                    <% } else if(locale == 'ru') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Исходный код Litecoin-Qt на GitHub</a>
+                    <% } else if(locale == 'de') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>             
+                    <% } else if(locale == 'el') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt πηγαίος κώδικας στο GitHub</a>
+                    <% } else if(locale == 'ja') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>GitHubでのLitecoin-Qtソースコード</a>
+                    <% } else if(locale == '') { %>
+                        <a class="download-link" href="https://github.com/litecoin-project"><span class="download-icon"><img src="images/icons/github.png" alt=""/></span>Litecoin-Qt source code on GitHub</a>
+                    <% } %>
+                    <a class="GPG" href="http://pgp.mit.edu:11371/pks/lookup?op=vindex&search=0xC37E4723969276F5" target="_blank"><div class="GPG-text">GPG Public Key</div></a>
+                </div>
                 
                 <% if(0) { %>
-                <a class="download" href="https://github.com/downloads/litecoin-project/litecoin/electrum-litecoin-0.61-macosx.zip"><span class="download-icon"><img src="images/icons/electrum.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin Electrum 0.61<br/><%= _for_osx[locale] %></a>
+                    <a class="download" href="https://github.com/downloads/litecoin-project/litecoin/electrum-litecoin-0.61-macosx.zip"><span class="download-icon"><img src="images/icons/electrum.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin Electrum 0.61<br/><%= _for_osx[locale] %></a>
                 <% } %>
 
-                <p style="text-align:center;clear:both;">
-                    <a href="https://github.com/litecoin-project/litecoin/downloads" target="_blank"><%= _browse_more_downloads[locale] %></a>
-                </p>
+                <% if(0) { %>
+                    <p style="text-align:center;clear:both;">
+                        <a href="https://github.com/litecoin-project/litecoin/downloads" target="_blank"><%= _browse_more_downloads[locale] %></a>
+                    </p>
+                <% } %>
 
             </div>
 

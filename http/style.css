@@ -210,17 +210,16 @@ a:hover { text-decoration: none; color: #C4971A; font-weight: bold; text-shadow:
 	float:left; 
 	text-align:center;
 }
-a.download {
+.download {
 	font-size: 13px;
 	font-weight: normal;
 	display: block;
 	float: left;
 	margin-right: 20px;
 	width: 240px;
-	height: 50px;
+	height: 90px;
 	margin-bottom: 10px;
 	line-height: 18px;
-	padding: 4px 0 8px 0;
 	text-shadow: 0 -1px 0 #4c9021;
 
 	background-color: #353431;
@@ -243,7 +242,14 @@ a.download {
 	box-shadow: inset 0 1px 0 0 #85837c; 
 	color: white;
 }
-a.download:hover {
+
+.download-link {
+	display: block;
+	padding: 4px 0 4px 0;
+	height: 72px;
+}
+
+.download-link:hover {
 	font-weight: normal;
     background-color: #53524d;
 	background-image: -webkit-linear-gradient(top, #5e5d58, #53524d);
@@ -256,4 +262,42 @@ a.download:hover {
     -ms-box-shadow: inset 0 1px 0 0 #8dbf67;
     -o-box-shadow: inset 0 1px 0 0 #8dbf67;
     cursor: pointer; 
+}
+
+a.download-link {
+	width: 240px;
+	height: 58px;
+	display: block;
+	text-shadow: 0 0 0;
+	color: white;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+a.GPG {
+	display: block;
+	width: 172px;
+	height: 22px;
+	padding: 0px 0px 0px 68px;
+	border-top: 1px solid white;
+	text-shadow: 0 0 0;
+	color: white;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.GPG:hover {
+    background-color: #53524d;
+}
+
+.GPG-text {
+	background:url(images/lock.png) no-repeat center left; 
+	display: block;
+	width: 140px;
+	padding-left: 20px;
+	margin-top: 2px;
+}
+
+.github > .GPG > .GPG-text {
+	background:url(images/info.png) no-repeat center left; 
 }
