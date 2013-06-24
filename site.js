@@ -11,7 +11,8 @@ var os = require('os'),
     https = require('https'),
     _ = require('underscore');
 
-var HTTP_PORT = 80;
+var _DEBUG = false;
+var HTTP_PORT = _DEBUG ? 8080 : 80;
 var ENABLE_CACHE = os.hostname() == "sif" ? true : false;
 
 var languages = {
@@ -50,14 +51,17 @@ function Application() {
 
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
-        res.render('index.ejs', { self : self, languages : languages, locale : 'en' }, function(err, html) {
-            if(err) {
-                res.end("<meta http-equiv=\"refresh\" content=\"2\">");
-                process.exit(1);
-            }
+        if(_DEBUG)
+            res.render('index.ejs', { self : self, languages : languages, locale : 'en' });
+        else
+            res.render('index.ejs', { self : self, languages : languages, locale : 'en' }, function(err, html) {
+                if(err) {
+                    res.end("<meta http-equiv=\"refresh\" content=\"2\">");
+                    process.exit(1);
+                }
 
-            res.end(html);
-        });
+                res.end(html);
+            });
     });
 
     var lang = [ ]
@@ -82,14 +86,17 @@ function Application() {
             if(ENABLE_CACHE && cache[locale_code])
                 return res.end(cache[locale_code]);
 
-            res.render('index.ejs', { self : self, languages : languages, locale : locale_code }, function(err, html) {
-                if(err) {
-                    res.end(err);
-                    process.exit(1);
-                }
-                cache[locale_code] = html;
-                res.end(html);
-            });
+            if(_DEBUG)
+                res.render('index.ejs', { self : self, languages : languages, locale : locale_code });
+            else
+                res.render('index.ejs', { self : self, languages : languages, locale : locale_code }, function(err, html) {
+                    if(err) {
+                        res.end(err);
+                        process.exit(1);
+                    }
+                    cache[locale_code] = html;
+                    res.end(html);
+                });
         })
 
         dpc(digest_language_handler);
