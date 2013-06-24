@@ -21,6 +21,7 @@ var languages = {
     'pt' : 'Português',
     'it' : 'Italiano',
     'de' : 'Deutsch',
+    'nl' : 'Nederlands',
     'el' : 'Ελληνικά',
     'ru' : 'Русский',
     'zh_HANS' : '中文',
