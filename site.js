@@ -45,6 +45,7 @@ function Application() {
         app.set('view options', { layout : false });
         app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
         app.use(express.static('http/'));
+        app.use('/downloads',express.static('downloads/'));
         app.use(app.router);
 
     });
