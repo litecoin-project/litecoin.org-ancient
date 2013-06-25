@@ -4,6 +4,8 @@
 // Copyright (c) 2013 Litecoin Project
 //
 
+    var software_version = "0.6.9.2";
+
     var _title = {
         "en" : "Litecoin - Open source P2P digital currency",
         "fr" : "Litecoin - Monnaie électronique décentralisée et open source",
@@ -301,18 +303,18 @@
             <div id="downloads" class="downloads-offset">
 
                 <div class="download">
-                    <a class="download-link" href="downloads/win32/litecoin-0.6.9.1-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.9.1<br/><%= _for_windows[locale] %></a>
-                    <a class="GPG" href="downloads/win32/litecoin-0.6.9.1-win32-setup.exe.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="downloads/win32/litecoin-<%= software_version %>-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_windows[locale] %></a>
+                    <a class="GPG" href="downloads/win32/litecoin-<%= software_version %>-win32-setup.exe.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
 
                 <div class="download">
-                    <a class="download-link" href="downloads/linux/litecoin-0.6.9.1-linux.tar.xz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.9.1<br/><%= _for_linux[locale] %></a>
-                    <a class="GPG" href="downloads/linux/litecoin-0.6.9.1-linux.tar.xz.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="downloads/linux/litecoin-<%= software_version %>-linux.tar.xz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_linux[locale] %></a>
+                    <a class="GPG" href="downloads/linux/litecoin-<%= software_version %>-linux.tar.xz.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
                 
                 <div class="download">
-                    <a class="download-link" href="downloads/macosx/Litecoin-Qt-0.6.9.1.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt 0.6.9.1<br/><%= _for_osx[locale] %></a>
-                    <a class="GPG" href="downloads/macosx/Litecoin-Qt-0.6.9.1.dmg.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_osx[locale] %></a>
+                    <a class="GPG" href="downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
 
                 <div class="download github">
