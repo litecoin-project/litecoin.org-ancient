@@ -50,6 +50,10 @@ function Application() {
 
     });
 
+    app.get('/upgrade', function(req, res) {
+        res.redirect("https://forum.litecoin.net/index.php/topic,4615.msg33170.html");
+    });
+
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
         if(_DEBUG)
