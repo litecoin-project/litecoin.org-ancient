@@ -45,8 +45,8 @@ function Application() {
         app.set('view options', { layout : false });
         // app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
 
-        // allow images to be cached
-        app.use('/images/', express.static('http/images/'));
+        // allow images to be cached (doesn't seem to take effect on the host)
+        // app.use('/images/', express.static('http/images/'));
 
         // override cache settings for other resources
         app.use(function(req, res, next) {
