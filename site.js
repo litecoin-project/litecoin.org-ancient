@@ -43,11 +43,21 @@ function Application() {
         app.use(express.bodyParser());
         app.set('view engine','ejs');
         app.set('view options', { layout : false });
-        app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
+        // app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
+
+        // allow images to be cached
+        app.use('/images/', express.static('http/images/'));
+
+        // override cache settings for other resources
+        app.use(function(req, res, next) {
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
+            next();        
+        })
         app.use(express.static('http/'));
         app.use('/downloads',express.static('downloads/'));
         app.use(app.router);
-
     });
 
     app.get('/upgrade', function(req, res) {
@@ -56,6 +66,7 @@ function Application() {
 
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
+
         if(_DEBUG)
             res.render('index.ejs', { self : self, languages : languages, locale : 'en' });
         else
