@@ -6,13 +6,15 @@
 
 var os = require('os'),
     exec = require('child_process').exec,
-    express = require('express'),
+    fs = require('fs'),
+    express = require('express'),    
     http = require('http'),
     https = require('https'),
     _ = require('underscore');
 
 var _DEBUG = false;
 var HTTP_PORT = _DEBUG ? 8080 : 80;
+var HTTPS_PORT = 443;
 var ENABLE_CACHE = os.hostname() == "sif" ? true : false;
 
 var languages = {
@@ -28,6 +30,26 @@ var languages = {
     'zh_HANS' : '中文',
     'zh_HANT' : '繁體中文',
     'ja' : '日本語',
+}
+
+var ENABLE_SSL = false;
+if(fs.existsSync(__dirname + '/certificates')) {
+    ENABLE_SSL = true;
+    var certificates = {
+        key : fs.readFileSync(__dirname + '/certificates/litecoin.org.key').toString(),
+        cert : fs.readFileSync(__dirname + '/certificates/litecoin.org.crt').toString(),
+        ca : [ ]
+    }
+
+    var cert = [ ]
+    var chain = fs.readFileSync(__dirname + '/certificates/gd_bundle-g2.crt').toString().split('\n');
+    _.each(chain, function(line) {  
+        cert.push(line);
+        if(line.match('/-END CERTIFICATE-/')) {
+            certificates.ca.push(cert.join('\n'));
+            cert = [ ]
+        }
+    })
 }
 
 function dpc(t,fn) { if(typeof(t) == 'function') setTimeout(t,0); else setTimeout(fn,t); }
@@ -151,10 +173,42 @@ function Application() {
             });
         });
 
-        console.log("HTTP server listening on port: ",HTTP_PORT);
-        http.createServer(app).listen(HTTP_PORT, function() {
-            secure();
-        });
+        if(1 && ENABLE_SSL) { // testing
+            
+            http.createServer(app).listen(HTTP_PORT, function() {
+                console.log("HTTP server listening on port: ",HTTP_PORT);
+                https.createServer(certificates, app).listen(HTTPS_PORT, function(){
+                    console.log("HTTPS server listening on port: ",HTTPS_PORT);
+                    secure();
+                })
+            })
+        }
+        else
+        if(!ENABLE_SSL) {
+            http.createServer(app).listen(HTTP_PORT, function() {
+                console.log("HTTP server listening on port: ",HTTP_PORT);
+                secure();
+            });
+        }
+        else {
+            console.log("Enabling SSL");
+
+            var unsecure = express();
+            unsecure.configure(function(){
+                unsecure.use(function(req, res, next) {
+                    redirect("https://litecoin.org");
+                })
+            })            
+
+            http.createServer(unsecure).listen(HTTP_PORT, function() {
+                console.log("HTTP server listening on port: ",HTTP_PORT);
+                https.createServer(certificates, app).listen(HTTPS_PORT, function(){
+                    console.log("HTTPS server listening on port: ",HTTPS_PORT);
+                    secure();
+                })
+            })
+        }
+
     }
 
     function secure() {
