@@ -115,7 +115,7 @@
     var _downloads_margin_top = 10;
     var _features_margin_top = 40;
     if(locale == 'en' || locale == 'ru')
-        _features_margin_top = 40;
+        _features_margin_top = 60;
     else
     if(locale == 'zh_HANS' || locale == 'zh_HANT') {
         _downloads_margin_top = 56;
@@ -303,18 +303,18 @@
             <div id="downloads" class="downloads-offset">
 
                 <div class="download">
-                    <a class="download-link" href="downloads/win32/litecoin-<%= software_version %>-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_windows[locale] %></a>
-                    <a class="GPG" href="downloads/win32/litecoin-<%= software_version %>-win32-setup.exe.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="/downloads/win32/litecoin-<%= software_version %>-win32-setup.exe"><span class="download-icon"><img src="images/icons/windows.png" alt=""/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_windows[locale] %></a>
+                    <a class="GPG" href="/downloads/win32/litecoin-<%= software_version %>-win32-setup.exe.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
 
                 <div class="download">
-                    <a class="download-link" href="downloads/linux/litecoin-<%= software_version %>-linux.tar.xz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_linux[locale] %></a>
-                    <a class="GPG" href="downloads/linux/litecoin-<%= software_version %>-linux.tar.xz.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="/downloads/linux/litecoin-<%= software_version %>-linux.tar.xz"><span class="download-icon"><img src="images/icons/linux.png" alt="" style="margin-top:-1px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_linux[locale] %></a>
+                    <a class="GPG" href="/downloads/linux/litecoin-<%= software_version %>-linux.tar.xz.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
                 
                 <div class="download">
-                    <a class="download-link" href="downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_osx[locale] %></a>
-                    <a class="GPG" href="downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg.asc"><div class="GPG-text">GPG Signature</div></a>
+                    <a class="download-link" href="/downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg"><span class="download-icon"><img src="images/icons/apple.png" alt="" style="margin-top:-3px;"/></span><span class="arrow-down"><img src="images/arrow-down.png" alt=""/></span><%= _download[locale] %><br/>Litecoin-Qt <%= software_version %><br/><%= _for_osx[locale] %></a>
+                    <a class="GPG" href="/downloads/macosx/Litecoin-Qt-<%= software_version %>.dmg.asc"><div class="GPG-text">GPG Signature</div></a>
                 </div>
 
                 <div class="download github">

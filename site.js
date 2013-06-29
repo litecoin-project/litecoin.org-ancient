@@ -54,6 +54,30 @@ if(fs.existsSync(__dirname + '/certificates')) {
 
 function dpc(t,fn) { if(typeof(t) == 'function') setTimeout(t,0); else setTimeout(fn,t); }
 
+
+function get_client_ip(req) {
+  var ipAddress;
+  // Amazon EC2 / Heroku workaround to get real client IP
+  var forwardedIpsStr = req.header('x-forwarded-for'); 
+  if (forwardedIpsStr) {
+    // 'x-forwarded-for' header may return multiple IP addresses in
+    // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
+    // the first one
+    var forwardedIps = forwardedIpsStr.split(',');
+    ipAddress = forwardedIps[0];
+  }
+  if (!ipAddress) {
+    // Ensure getting client IP address still works in
+    // development environment
+    ipAddress = 'N/A'; //req.connection.remoteAddress;
+  }
+  return ipAddress;
+};
+
+exec('ulimit -Sn', function(err, stdout, stderr){
+	console.log('ulimit:',stdout);
+})
+
 function Application() {
     var self = this;
 
@@ -67,18 +91,39 @@ function Application() {
         app.set('view options', { layout : false });
         // app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
 
+	app.use(function(req, res, next) {
+
+		if(req.originalUrl.match(/downloads/))
+		console.log((new Date())+' - '+get_client_ip(req)+' - ', req.originalUrl);
+
+		next();
+	})
+
         // allow images to be cached
+	app.use('/downloads',express.static('downloads/'));
+        app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
+
         app.use('/images/', express.static('http/images/'));
 
         // override cache settings for other resources
         app.use(function(req, res, next) {
+
+return next();
+
             res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+	    res.header("Last-Modified", Date.now());
             res.header("Pragma", "no-cache");
             res.header("Expires", 0);
+
+//
+//if(req.originalUrl != '/')
+
             next();        
         })
+//        app.use('/images/', express.static('http/images/'));
+
         app.use(express.static('http/'));
-        app.use('/downloads',express.static('downloads/'));
+//        app.use('/downloads',express.static('downloads/'));
         app.use(app.router);
     });
 
@@ -95,6 +140,8 @@ function Application() {
             res.render('index.ejs', { self : self, languages : languages, locale : 'en' }, function(err, html) {
                 if(err) {
                     res.end("<meta http-equiv=\"refresh\" content=\"2\">");
+		    console.log(new Date());
+		    console.log(err);
                     process.exit(1);
                 }
 
@@ -173,7 +220,9 @@ function Application() {
             });
         });
 
-        if(1 && ENABLE_SSL) { // testing
+// ENABLE_SSL = false;
+
+        if(0 && ENABLE_SSL) { // testing
             
             http.createServer(app).listen(HTTP_PORT, function() {
                 console.log("HTTP server listening on port: ",HTTP_PORT);
@@ -185,21 +234,32 @@ function Application() {
         }
         else
         if(!ENABLE_SSL) {
+
             http.createServer(app).listen(HTTP_PORT, function() {
                 console.log("HTTP server listening on port: ",HTTP_PORT);
                 secure();
             });
+
+
         }
         else {
             console.log("Enabling SSL");
 
             var unsecure = express();
             unsecure.configure(function(){
-                unsecure.use(function(req, res, next) {
-                    redirect("https://litecoin.org");
+                unsecure.use('/', function(req, res, next) {
+                    res.redirect("https://litecoin.org");
                 })
             })            
 
+            http.createServer(unsecure).on('connection', function(socket){socket.setTimeout(5000);}).listen(HTTP_PORT, function() {
+                console.log("HTTP server listening on port: ",HTTP_PORT);
+                https.createServer(certificates, app).on('connection', function(socket){socket.setTimeout(5000);}).listen(HTTPS_PORT, function(){
+                    console.log("HTTPS server listening on port: ",HTTPS_PORT);
+                    secure();
+                })
+            })
+/*
             http.createServer(unsecure).listen(HTTP_PORT, function() {
                 console.log("HTTP server listening on port: ",HTTP_PORT);
                 https.createServer(certificates, app).listen(HTTPS_PORT, function(){
@@ -207,6 +267,7 @@ function Application() {
                     secure();
                 })
             })
+*/
         }
 
     }
