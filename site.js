@@ -7,6 +7,7 @@
 var os = require('os'),
     exec = require('child_process').exec,
     fs = require('fs'),
+    mime = require('mime'),
     express = require('express'),    
     http = require('http'),
     https = require('https'),
@@ -69,18 +70,73 @@ function get_client_ip(req) {
   if (!ipAddress) {
     // Ensure getting client IP address still works in
     // development environment
-    ipAddress = 'N/A'; //req.connection.remoteAddress;
+    ipAddress = 'DIRECT:' + req.connection.remoteAddress;
   }
   return ipAddress;
 };
 
-exec('ulimit -Sn', function(err, stdout, stderr){
-	console.log('ulimit:',stdout);
-})
+function StaticCache() {
+    var self = this;
+
+    self.cache = { }
+
+    function error(res, code) {
+        var msg = http.STATUS_CODES[code];
+        res.statusCode = code;
+        res.end(msg);
+    }
+
+    function send(res, cache, url) {
+        res.header("Accept-Ranges", "none");
+        res.header("Date", new Date().toUTCString());
+        res.header("Cache-Control", "public, max-age="+(60*60));
+        res.header("Last-Modified", cache.last_modified);
+        res.header("Content-Type", cache.mime);
+        res.end(cache.data);
+    }
+
+    self.handler = function(root) {
+
+        var handler = function(req, res, next) {
+
+            var url = req.originalUrl;
+            if(~req.url.indexOf('..'))
+                return error(403);
+
+            var cache = self.cache[url];
+            if(cache) 
+                return send(res, cache, url);
+
+            var path = __dirname + '/' + root + url;
+            fs.stat(path, function(err, stat) {
+                if(err || stat.isDirectory())
+                    return next();
+
+                fs.readFile(path, function(err, data) {
+                    if(err)
+                        return next();
+
+                    var type = mime.lookup(url);
+                    var charset = mime.charsets.lookup(type);
+                    if(charset)
+                        type += '; charset='+charset;
+                    cache = {
+                        mime : type,
+                        data : data,
+                        last_modified : stat.mtime.toUTCString()
+                    }
+                    self.cache[url] = cache;
+                    return send(res, cache);
+                });
+            })
+        }
+
+        return handler;
+    }
+}
 
 function Application() {
     var self = this;
-
     var cache = { }
 
     var app = express();
@@ -91,39 +147,33 @@ function Application() {
         app.set('view options', { layout : false });
         // app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
 
-	app.use(function(req, res, next) {
+    	app.use(function(req, res, next) {
+    		if(req.originalUrl.match(/downloads/))
+    		console.log((new Date())+' - '+get_client_ip(req)+' - ', req.originalUrl);
+    		next();
+    	})
 
-		if(req.originalUrl.match(/downloads/))
-		console.log((new Date())+' - '+get_client_ip(req)+' - ', req.originalUrl);
-
-		next();
-	})
-
-        // allow images to be cached
-	app.use('/downloads',express.static('downloads/'));
-        app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
-
-        app.use('/images/', express.static('http/images/'));
+    	app.use('/downloads',express.static('downloads/'));
 
         // override cache settings for other resources
         app.use(function(req, res, next) {
-
-return next();
-
             res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-	    res.header("Last-Modified", Date.now());
             res.header("Pragma", "no-cache");
             res.header("Expires", 0);
-
-//
-//if(req.originalUrl != '/')
-
             next();        
         })
-//        app.use('/images/', express.static('http/images/'));
 
-        app.use(express.static('http/'));
-//        app.use('/downloads',express.static('downloads/'));
+        if(ENABLE_CACHE) {
+            console.log("Using static content in-memory cache");
+            self.static_cache = new Cache();
+            app.use('/images/',self.static_cache.handler('http/images/'));
+            app.use(self.static_cache.handler('http/'));
+        }
+        else {
+            app.use('/images/', express.static('http/images/'));
+            app.use(express.static('http/'));
+        }
+
         app.use(app.router);
     });
 
@@ -220,7 +270,7 @@ return next();
             });
         });
 
-// ENABLE_SSL = false;
+//       ENABLE_SSL = false;
 
         if(0 && ENABLE_SSL) { // testing
             
@@ -234,15 +284,13 @@ return next();
         }
         else
         if(!ENABLE_SSL) {
-
             http.createServer(app).listen(HTTP_PORT, function() {
                 console.log("HTTP server listening on port: ",HTTP_PORT);
                 secure();
             });
-
-
         }
         else {
+
             console.log("Enabling SSL");
 
             var unsecure = express();
@@ -252,22 +300,18 @@ return next();
                 })
             })            
 
-            http.createServer(unsecure).on('connection', function(socket){socket.setTimeout(5000);}).listen(HTTP_PORT, function() {
+            var default_socket_timeout = 5000;
+            http.createServer(unsecure).on('connection', function(socket) {
+                socket.setTimeout(default_socket_timeout);
+            }).listen(HTTP_PORT, function() {
                 console.log("HTTP server listening on port: ",HTTP_PORT);
-                https.createServer(certificates, app).on('connection', function(socket){socket.setTimeout(5000);}).listen(HTTPS_PORT, function(){
+                https.createServer(certificates, app).on('connection', function(socket) {
+                    socket.setTimeout(default_socket_timeout);
+                }).listen(HTTPS_PORT, function() {
                     console.log("HTTPS server listening on port: ",HTTPS_PORT);
                     secure();
                 })
             })
-/*
-            http.createServer(unsecure).listen(HTTP_PORT, function() {
-                console.log("HTTP server listening on port: ",HTTP_PORT);
-                https.createServer(certificates, app).listen(HTTPS_PORT, function(){
-                    console.log("HTTPS server listening on port: ",HTTPS_PORT);
-                    secure();
-                })
-            })
-*/
         }
 
     }
