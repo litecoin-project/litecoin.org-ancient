@@ -4,7 +4,7 @@
 // Copyright (c) 2013 Litecoin Project
 //
 
-    var software_version = "0.6.9.2";
+    var software_version = "0.8.3.7";
 
     var _title = {
         "en" : "Litecoin - Open source P2P digital currency",
@@ -96,6 +96,10 @@
         "ja":"Mac OS X ダウンロード用",
     }
 
+    var _release_notes = {
+	"en":"Release Notes..."
+    }
+
     var _browse_more_downloads = {
         "en":"Other downloads...",
         "fr":"Autres téléchargements...",
@@ -113,23 +117,23 @@
 
     //# due to change of intro text amount, we adjust features or downloads top margin
     var _downloads_margin_top = 10;
-    var _features_margin_top = 40;
+    var _features_margin_top = 60;
     if(locale == 'en' || locale == 'ru')
         _features_margin_top = 60;
     else
     if(locale == 'zh_HANS' || locale == 'zh_HANT') {
         _downloads_margin_top = 56;
-        _features_margin_top = 50;
+        _features_margin_top = 60;
     }
     else
     if(locale == 'ja') {
         _downloads_margin_top = 56;
-        _features_margin_top = 36;
+        _features_margin_top = 56;
     }
     else
     if(locale == 'el') {
         _downloads_margin_top = 0;
-        _features_margin_top = 36;
+        _features_margin_top = 56;
     }
 
     var locale_menu = "";
@@ -163,14 +167,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><%= _title[locale] || 'Litecoin' %></title>
     <meta name="description" content="Litecoin is a cryptocurrency that enables instant payments to anyone in the world and that can be efficiently mined with consumer-grade hardware." />
-    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' />
     <!-- link type="text/css" rel="stylesheet" media="screen" href="extern/reset.css" / -->
     <link type="text/css" rel="stylesheet" media="screen" href="style.css" />
     <link type="text/css" rel="stylesheet" media="print" href="print.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="extern/jquery.min.js"></script>
+    <!-- script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script -->
     <script type="text/javascript" src="extern/jquery.fancybox-1.3.4.pack.js"></script>
     <!-- script type="text/javascript" src="extern/jquery.easing-1.4.pack.js"></script -->
-    <script type="text/javascript" src="extern/jquery.mousewheel-3.0.4.pack.js"></script>
+    <!-- script type="text/javascript" src="extern/jquery.mousewheel-3.0.4.pack.js"></script -->
     <script type="text/javascript" src="custom.js"></script>
     <link rel="stylesheet" href="extern/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <script src="extern/jquery.tipsy.js" type="text/javascript"></script>
@@ -359,6 +364,13 @@
                         <a href="https://github.com/litecoin-project/litecoin/downloads" target="_blank"><%= _browse_more_downloads[locale] %></a>
                     </p>
                 <% } %>
+
+                <% if(1) { %>
+                    <p style="text-align:center;clear:both;">
+                        <a href="http://blog.litecoin.org/2013/07/release-notes-of-litecoin-0837.html" target="_blank"><%= (_release_notes[locale] || _release_notes['en']) %></a>
+                    </p>
+                <% } %>
+
 
             </div>
 

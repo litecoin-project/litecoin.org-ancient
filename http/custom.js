@@ -18,7 +18,7 @@ try {
 if(__locale && document.location.pathname == '/'+__locale)
 	document.location.href = '/'+__locale;
 
-jQuery(document).ready(function($) {
+$(document).ready(function($) {
 
 	$('.alignright img').tipsy({fade: true});
 

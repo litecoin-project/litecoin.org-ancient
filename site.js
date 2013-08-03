@@ -13,6 +13,11 @@ var os = require('os'),
     https = require('https'),
     _ = require('underscore');
 
+    var lithium = null;
+try {
+    lithium = require('./lithium');
+} catch(ex) { }
+
 var _DEBUG = false;
 var HTTP_PORT = _DEBUG ? 8080 : 80;
 var HTTPS_PORT = 443;
@@ -32,6 +37,11 @@ var languages = {
     'zh_HANT' : '繁體中文',
     'ja' : '日本語',
 }
+
+exec('ulimit -Sn', function(err, stdout, stderr) {
+//  /etc/security/limits.conf
+	console.log('file handle limit:',stdout);
+})
 
 var ENABLE_SSL = false;
 if(fs.existsSync(__dirname + '/certificates')) {
@@ -80,6 +90,16 @@ function StaticCache() {
 
     self.cache = { }
 
+/*	function report_cache_size() {
+		var cache_size = 0;
+		_.each(self.cache, function(o){
+			cache_size += o.data.length;
+		})
+//		console.log('Memory cache size:',(cache_size/1024/1024).toFixed(2)+'Mb');
+	}
+	setInterval(report_cache_size, 1000*60);
+	setTimeout(report_cache_size, 1000*15);
+*/
     function error(res, code) {
         var msg = http.STATUS_CODES[code];
         res.statusCode = code;
@@ -92,15 +112,22 @@ function StaticCache() {
         res.header("Cache-Control", "public, max-age="+(60*60));
         res.header("Last-Modified", cache.last_modified);
         res.header("Content-Type", cache.mime);
+	res.header("Content-Length", cache.data.length);
         res.end(cache.data);
     }
 
-    self.handler = function(root) {
+    self.handler = function(prefix, _root) {
+
+	var root = _root || '';
 
         var handler = function(req, res, next) {
 
             var url = req.originalUrl;
-            if(~req.url.indexOf('..'))
+
+		if(prefix && url.indexOf(prefix) != 0)
+			return next();
+
+            if(~req.url.indexOf('..') || req.url.indexOf('.') == 0)
                 return error(403);
 
             var cache = self.cache[url];
@@ -145,44 +172,55 @@ function Application() {
         app.use(express.bodyParser());
         app.set('view engine','ejs');
         app.set('view options', { layout : false });
-        // app.use(express.staticCache({ maxObjects : 32, maxLength : 1024 }));
+
+//	app.use(lithium);
+
+	var last_download_ip = '';
 
     	app.use(function(req, res, next) {
-    		if(req.originalUrl.match(/downloads/))
-    		console.log((new Date())+' - '+get_client_ip(req)+' - ', req.originalUrl);
+
+		req.shouldKeepAlive = false;
+		res.header('Connection','close');
+
+    		if(req.originalUrl.match(/downloads/)) {
+			// res.setHeader("Accept-Ranges", "none");
+			var ip = get_client_ip(req);
+			if(ip == last_download_ip)
+				console.log(req.headers);
+			last_download_ip = ip;
+	    		console.log((new Date())+' - '+ip+' - ', req.originalUrl);
+		}
     		next();
     	})
 
-    	app.use('/downloads',express.static('downloads/'));
-
-        // override cache settings for other resources
-        app.use(function(req, res, next) {
-            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-            res.header("Pragma", "no-cache");
-            res.header("Expires", 0);
-            next();        
-        })
-
-        if(ENABLE_CACHE) {
-            console.log("Using static content in-memory cache");
-            self.static_cache = new Cache();
-            app.use('/images/',self.static_cache.handler('http/images/'));
-            app.use(self.static_cache.handler('http/'));
-        }
-        else {
-            app.use('/images/', express.static('http/images/'));
-            app.use(express.static('http/'));
-        }
+	app.use('/downloads',express.static('downloads/'));
+        app.use('/images/', express.static('http/images/'));
+        app.use(express.static('http/'));
 
         app.use(app.router);
     });
 
+/*    app.get('/test', function(req, res) {
+	console.log(req);
+	res.end();
+    });
+*/
     app.get('/upgrade', function(req, res) {
-        res.redirect("https://forum.litecoin.net/index.php/topic,4615.msg33170.html");
+        res.redirect("http://blog.litecoin.org/2013/07/release-notes-of-litecoin-0837.html");
+    });
+
+    app.get('/update', function(req, res) {
+        res.redirect("http://blog.litecoin.org/2013/07/release-notes-of-litecoin-0837.html");
     });
 
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
+	res.header("Cache-Control", "public, max-age="+(60*60));
+ 
+	var locale_code = 'en';
+	if(ENABLE_CACHE && cache[locale_code])
+		return res.end(cache[locale_code]);
+
 
         if(_DEBUG)
             res.render('index.ejs', { self : self, languages : languages, locale : 'en' });
@@ -195,6 +233,7 @@ function Application() {
                     process.exit(1);
                 }
 
+		cache[locale_code] = html;
                 res.end(html);
             });
     });
@@ -212,7 +251,8 @@ function Application() {
         console.log("locale: "+locale_code);
         app.get("/"+locale_code, function(req, res) {
             res.header("Content-Language", locale_code);
-
+ 	    res.header("Cache-Control", "public, max-age="+(60*60));
+ 
             // if ENABLE_CACHE is set to true, we pre-render pages based
             // on locale into cache. After that, pages are served without 
             // EJS rendering. This, however, requires server restart
@@ -226,7 +266,9 @@ function Application() {
             else
                 res.render('index.ejs', { self : self, languages : languages, locale : locale_code }, function(err, html) {
                     if(err) {
-                        res.end(err);
+                    	res.end("<meta http-equiv=\"refresh\" content=\"2\">");
+			console.log(new Date());
+			console.log(err);
                         process.exit(1);
                     }
                     cache[locale_code] = html;
@@ -296,7 +338,7 @@ function Application() {
             var unsecure = express();
             unsecure.configure(function(){
                 unsecure.use('/', function(req, res, next) {
-                    res.redirect("https://litecoin.org");
+                    res.redirect("https://litecoin.org"+req.originalUrl);
                 })
             })            
 
