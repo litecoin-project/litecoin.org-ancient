@@ -206,11 +206,11 @@ function Application() {
     });
 */
     app.get('/upgrade', function(req, res) {
-        res.redirect("http://blog.litecoin.org/2013/07/release-notes-of-litecoin-0837.html");
+        res.redirect("http://blog.litecoin.org/2013/09/litecoin-0851-release-notes.html");
     });
 
     app.get('/update', function(req, res) {
-        res.redirect("http://blog.litecoin.org/2013/07/release-notes-of-litecoin-0837.html");
+        res.redirect("http://blog.litecoin.org/2013/09/litecoin-0851-release-notes.html");
     });
 
     app.get('/', function(req, res, next) {
