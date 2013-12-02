@@ -70,7 +70,7 @@ a:hover { text-decoration: none; color: #C4971A; font-weight: bold; text-shadow:
 	border:none;
 }
 
-#intro { /*border: 1px solid green;*/ width:550px; xheight: 320px; float:right; }
+#intro { /*border: 1px solid green;*/ width:550px; float:right; }
 #intro h1 { font-weight: bold;font-size: 16px;color: #484848;  margin-bottom:20px; margin-left:-1px; }
 #intro h2 { font-size:14px; line-height:20px; color:#4c4c4c; font-weight: normal; }
 .viewall {
