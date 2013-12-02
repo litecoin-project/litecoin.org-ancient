@@ -301,3 +301,130 @@ a.GPG {
 .github > .GPG > .GPG-text {
 	background:url(images/info.png) no-repeat center left; 
 }
+
+
+.pulse {
+	-webkit-animation: pulse 1s linear infinite;
+	-moz-animation: pulse 1s linear infinite;
+	-ms-animation: pulse 1s linear infinite;
+	animation: pulse 1s linear infinite;
+}
+
+@keyframes "pulse" {
+ 0% {
+    -webkit-transform: scale(0.95);
+   	-moz-transform: scale(0.95);
+   	-o-transform: scale(0.95);
+   	-ms-transform: scale(0.95);
+   	transform: scale(0.95);
+ }
+ 50% {
+    -webkit-transform: scale(1.0);
+   	-moz-transform: scale(1.0);
+   	-o-transform: scale(1.0);
+   	-ms-transform: scale(1.0);
+   	transform: scale(1.0);
+ }
+ 100% {
+    -webkit-transform: scale(0.95);
+   	-moz-transform: scale(0.95);
+   	-o-transform: scale(0.95);
+   	-ms-transform: scale(0.95);
+   	transform: scale(0.95);
+ }
+
+}
+
+@-moz-keyframes pulse {
+ 0% {
+   -moz-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+ 50% {
+   -moz-transform: scale(1.0);
+   transform: scale(1.0);
+ }
+ 100% {
+   -moz-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+
+}
+
+@-webkit-keyframes "pulse" {
+ 0% {
+   -webkit-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+ 50% {
+   -webkit-transform: scale(1.0);
+   transform: scale(1.0);
+ }
+ 100% {
+   -webkit-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+
+}
+
+@-ms-keyframes "pulse" {
+ 0% {
+   -ms-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+ 50% {
+   -ms-transform: scale(1.0);
+   transform: scale(1.0);
+ }
+ 100% {
+   -ms-transform: scale(0.95);
+   transform: scale(0.95);
+ }
+
+}
+
+#gplus-wrapper {
+	position: absolute;
+	width: 940px;
+	margin-top: 56px;
+	height: 0px;	
+	z-index:1000;
+	background-color: white;
+}
+
+
+#litecoin-gplus {
+	clear:both;
+	position:relative;
+	float:right;
+	z-index:1000;
+	width:300px;
+	height:392px;
+	border:1px solid #53524d;
+	box-shadow: 4px 4px #ccc;
+}
+
+
+#twitter-wrapper {
+	position: absolute;
+	width: 940px;
+	margin-top: 56px;
+	height: 0px;	
+	z-index:1000;
+}
+
+#litecoin-twitter {
+	clear:both;
+	position:relative;
+	float:right;
+	z-index:1000;
+	width:600px;
+	height:600px;
+	border:1px solid #53524d;
+	box-shadow: 4px 4px #ccc;	
+}
+
+.twitter-instance {
+	float: left;
+	width: 300px;
+}

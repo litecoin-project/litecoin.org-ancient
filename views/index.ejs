@@ -196,17 +196,47 @@
 </div>
 
 <div id="pager">
-    <div id="header">
+    <div id="header" style='overflow:visible;'>
         <div id="language"><%- locale_menu %></div>
         <div class="alignleft"><img src="images/litecoin-logo-192.png" class="logo" alt="Litecoin Logo"/></div>
-        <div class="alignright">
-            <a href="http://forum.litecoin.net" target="_blank"><img src="images/bubble-icon.png" onmouseover="this.src='images/bubble-icon-over.png'" onmouseout="this.src='images/bubble-icon.png'" title="Litecoin Forum" height="18" width="22" alt="Forum Thread"/></a>
-            <a href="http://twitter.com/litecoin" target="_blank"><img src="images/twitter-icon.png" onmouseover="this.src='images/twitter-icon-over.png'" onmouseout="this.src='images/twitter-icon.png'" title="@litecoin" height="18" width="22" alt="Twitter"/></a><a href="https://plus.google.com/104307324656397909502/posts" target="_blank"><img src="images/google-icon.png" onmouseover="this.src='images/google-icon-over.png'" onmouseout="this.src='images/google-icon.png'" title="Google Plus" height="18" width="22" alt="Google Plus"/></a>
+        <div class="alignright" style='margin-top:8px;'>
+            <a id='gplus-image' href="https://plus.google.com/104307324656397909502/posts" target="_blank"><img class='pulse' src="images/google-40px.png" onmouseover="this.src='images/google-over-40px.png'" onmouseout="this.src='images/google-40px.png'" title="Google Plus" height="40" width="40" alt="Google Plus"/></a>
+            <a id='twitter-image' href="http://twitter.com/litecoin" target="_blank"><img class='pulse' src="images/twitter-over-40px.png" xonmouseover="this.src='images/twitter-over-40px.png'" xonmouseout="this.src='images/twitter-40px.png'" title="Litecoin Twitters" height="40" width="40" alt="Twitter"/></a>
+            <a href="http://forum.litecoin.net" target="_blank"><img class='pulse hint' src="images/forum-40px.png" onmouseover="this.src='images/forum-over-40px.png'" onmouseout="this.src='images/forum-40px.png'" title="Litecoin Forum" height="40" width="40" alt="Forum Thread"/></a>
          </div>
+         <div id='gplus-wrapper'>
+            <div id='litecoin-gplus' style='visibility:hidden;opacity:0;'>
+                <div class="g-page litecoin-gplus" data-href="https://plus.google.com/104307324656397909502" data-rel="publisher"></div>
+            </div>
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+         </div>
+        <div id='twitter-wrapper'>
+            <div id='litecoin-twitter' style='visibility:hidden;opacity:0;'>
+                <div class='twitter-instance'>
+                    <a class="twitter-timeline" href="https://twitter.com/litecoin" data-widget-id="407260620635918336">Tweets by @litecoin</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+                <!-- @LitecoinProject is out since @litecoin re-tweets it.
+                <div class='twitter-instance'>
+                    <a class="twitter-timeline" href="https://twitter.com/LitecoinProject" data-widget-id="407121171159592960">Tweets by @LitecoinProject</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+                -->
+                <div class='twitter-instance'>
+                    <a class="twitter-timeline" href="https://twitter.com/LitecoinAssoc" data-widget-id="407121640963588096">Tweets by @LitecoinAssoc</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>                
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="wrapper">
-    
         <div id="right">
             <div id="intro">
                 <% if(locale == 'en') { %>

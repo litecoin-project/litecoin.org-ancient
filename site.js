@@ -19,7 +19,8 @@ try {
 } catch(ex) { }
 
 var _DEBUG = false;
-var HTTP_PORT = _DEBUG ? 8080 : 80;
+var args = process.argv.slice(2);
+var HTTP_PORT = parseInt(args.shift()) || (_DEBUG ? 8080 : 80);
 var HTTPS_PORT = 443;
 var ENABLE_CACHE = os.hostname() == "sif" ? true : false;
 
