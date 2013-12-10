@@ -185,7 +185,7 @@ function Stats() {
             var data = fs.readFileSync('stats.json');
             if(data) {
                 try {
-                    stats = JSON.parse(data.toString('utf-8'));
+                    stats = self.data = JSON.parse(data.toString('utf-8'));
                 }
                 catch(ex) {
                     console.log(ex);
