@@ -208,7 +208,7 @@ function Stats() {
         });
     }
 
-    function push(headers, url) {
+    self.push = function(headers, url) {
         if(!stats.totals[url])
             stats.totals[url] = 0;
         stats.totals[url]++;
