@@ -165,7 +165,7 @@ function StaticCache() {
 
 function Stats() {
     var self = this;
-    var stats = {
+    var stats = self.data = {
         country : { },
         totals : { },
         referer_count : 0,
@@ -289,6 +289,10 @@ function Application() {
     app.get('/update', function(req, res) {
         res.redirect("http://blog.litecoin.org/2013/09/litecoin-0851-release-notes.html");
     });
+
+    if(fs.existsSync('plugins.js')) {
+        try { eval(fs.readFileSync('plugins.js').toString('utf-8')); } catch(ex) { console.log(ex); }
+    }
 
     app.get('/', function(req, res, next) {
         res.header("Content-Language", "en");
