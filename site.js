@@ -163,9 +163,81 @@ function StaticCache() {
     }
 }
 
+function Stats() {
+    var self = this;
+    var stats = {
+        country : { },
+        totals : { },
+        referer_count : 0,
+        referer : { },
+    }
+
+    restore(function() {
+        dpc(30 * 1000, function() {
+            flush();
+        })
+    })
+
+    // --
+
+    function restore(callback) {
+        if(fs.existsSync('stats.json')) {
+            var data = fs.readFileSync('stats.json');
+            if(data) {
+                try {
+                    stats = JSON.parse(data.toString('utf-8'));
+                }
+                catch(ex) {
+                    console.log(ex);
+                }
+            }
+        }
+
+        callback && callback();
+    }
+
+    function store(callback) {
+        fs.writeFile('stats.json', JSON.stringify(stats, null, ' '), function() {
+            callback && callback();
+        });
+    }
+
+    function flush() {
+        store(function() {
+            dpc(60 * 1000, flush); // flush stats once a minute
+        });
+    }
+
+    function push(headers, url) {
+        if(!stats.totals[url])
+            stats.totals[url] = 0;
+        stats.totals[url]++;
+
+        var country = headers['cf-ipcountry'] || 'N/A';
+        if(!stats.country[country])
+            stats.country[country] = { }
+        if(!stats.country[country][url])
+            stats.country[country][url] = 0;
+        stats.country[country][url]++;
+
+        if(stats.referer_count < (1024 * 16) && headers.referer && headers.referer.indexOf('https://litecoin.org') == -1) {
+            
+            if(!stats.referer[headers.referer]) {
+                stats.referer[headers.referer] = { }
+                stats.referer_count++;
+            }
+
+            if(!stats.referer[headers.referer][url])
+                stats.referer[headers.referer][url] = 0;
+            stats.referer[headers.referer][url]++;
+        }
+    }
+}
+
 function Application() {
     var self = this;
     var cache = { }
+    var stats = new Stats();
 
     var app = express();
 
@@ -174,25 +246,24 @@ function Application() {
         app.set('view engine','ejs');
         app.set('view options', { layout : false });
 
-//	app.use(lithium);
-
-	var last_download_ip = '';
+//	    app.use(lithium);
 
     	app.use(function(req, res, next) {
 
-		req.shouldKeepAlive = false;
-		res.header('Connection','close');
+    		req.shouldKeepAlive = false;
+    		res.header('Connection','close');
 
-    		if(req.originalUrl.match(/downloads/)) {
-			// res.setHeader("Accept-Ranges", "none");
-			var ip = get_client_ip(req);
-			//if(ip == last_download_ip)
-			//if(req.headers.range)
-			//	console.log(req.headers);
-			//last_download_ip = ip;
-	    		console.log((new Date())+' - '+ip+' - ', req.originalUrl);
-		}
-    		next();
+        	if(req.originalUrl.match(/downloads/)) {
+                var ip = get_client_ip(req);
+
+                if(!req.headers.range) {
+                    stats.push(req.headers, req.originalUrl);
+                    console.log((new Date())+' - '+ip+' - ', req.originalUrl);
+                }
+    			//	console.log(req.headers);
+    		}
+
+        	next();
     	})
 
 	app.use('/downloads',express.static('downloads/'));
