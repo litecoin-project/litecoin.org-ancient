@@ -186,9 +186,10 @@ function Application() {
     		if(req.originalUrl.match(/downloads/)) {
 			// res.setHeader("Accept-Ranges", "none");
 			var ip = get_client_ip(req);
-			if(ip == last_download_ip)
-				console.log(req.headers);
-			last_download_ip = ip;
+			//if(ip == last_download_ip)
+			//if(req.headers.range)
+			//	console.log(req.headers);
+			//last_download_ip = ip;
 	    		console.log((new Date())+' - '+ip+' - ', req.originalUrl);
 		}
     		next();
