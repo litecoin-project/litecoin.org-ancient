@@ -209,6 +209,10 @@ function Stats() {
     }
 
     function push(headers, url) {
+
+        if(!fs.existsSync(__dirname + url))
+            return;
+
         if(!stats.totals[url])
             stats.totals[url] = 0;
         stats.totals[url]++;
