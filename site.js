@@ -208,7 +208,7 @@ function Stats() {
         });
     }
 
-    function push(headers, url) {
+    self.push = function(headers, url) {
 
         if(!fs.existsSync(__dirname + url))
             return;
