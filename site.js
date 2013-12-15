@@ -283,11 +283,11 @@ function Application() {
     });
 */
     app.get('/upgrade', function(req, res) {
-        res.redirect("https://litecoin.info/Upgrading_Litecoin#Upgrading_to_0.8.6.1");
+        res.redirect("http://blog.litecoin.org/2013/12/litecoin-086-release-notes.html");
     });
 
     app.get('/update', function(req, res) {
-        res.redirect("https://litecoin.info/Upgrading_Litecoin#Upgrading_to_0.8.6.1");
+        res.redirect("http://blog.litecoin.org/2013/12/litecoin-086-release-notes.html");
     });
 
     if(fs.existsSync('plugins.js')) {
