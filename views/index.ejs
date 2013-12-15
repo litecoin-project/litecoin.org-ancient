@@ -100,6 +100,10 @@
 	"en":"Release Notes..."
     }
 
+    var _upgrade_notes = {
+	"en":"Important Upgrade Notes..."
+    }
+
     var _browse_more_downloads = {
         "en":"Other downloads...",
         "fr":"Autres téléchargements...",
@@ -392,6 +396,7 @@
                 <% if(1) { %>
                     <p style="text-align:center;clear:both;">
                         <a href="http://blog.litecoin.org/2013/12/litecoin-086-release-notes.html" target="_blank"><%= (_release_notes[locale] || _release_notes['en']) %></a>
+                        <a href="https://litecoin.info/Upgrading_Litecoin#Upgrading_to_0.8.6.1" target="_blank"><%= (_upgrade_notes[locale] || _upgrade_notes['en']) %></a>
                     </p>
                 <% } %>
 
