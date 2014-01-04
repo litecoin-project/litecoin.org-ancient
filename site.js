@@ -32,6 +32,7 @@ var languages = {
     'it' : 'Italiano',
     'de' : 'Deutsch',
     'nl' : 'Nederlands',
+    'pl' : 'Polski',
     'el' : 'Ελληνικά',
     'ru' : 'Русский',
     'zh_HANS' : '中文',

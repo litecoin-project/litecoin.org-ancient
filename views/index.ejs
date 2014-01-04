@@ -14,6 +14,7 @@
         "it" : "Litecoin - Valuta digitale P2P Open source",
         "de" : "Litecoin - Open Source P2P Internetwährung",
         "nl" : "Litecoin",
+        "pl" : "Litecoin - Cyfrowa waluta",
         "el" : "Litecoin - Ψηφιακό Νόμισμα P2P  Ανοικτού Κώδικα",
         "ru" : "Litecoin - Электронная Валюта",
         "zh_HANS" : "Litecoin - 开源P2P电子货币",
@@ -32,6 +33,7 @@
         "ru" : "Все права защищены © 2009-2013 Проект Litecoin",
         "de" : "Copyright &copy; 2013 Litecoin Project. All rights reserved.",
         "nl" : "Copyright &copy; 2013 Litecoin Developers. Alle rechten voorbehouden.",
+        "pl" : "Copyright &copy; 2013 Litecoin Project. Wszelkie prawa zastrzeżone.",
         "el" : "Πνευματική Ιδιοκτησία &copy; 2013 Litecoin Project. Mε την επιφύλαξη παντός δικαιώματος.",
         "ja" : "Copyright &copy; 2013 Litecoin Project. All rights reserved.",
     }
@@ -47,6 +49,7 @@
         "ru":"ЗАГРУЗИТЬ",
         "de":"DOWNLOAD",
         "nl":"DOWNLOAD",
+        "pl":"POBIERZ",
         "el":"ΚΑΤΕΒΑΣΤΕ",
         "ja":"ダウンロード",
     }
@@ -62,6 +65,7 @@
         "ru":"для Windows",
         "de":"für Windows",
         "nl":"voor Windows",
+        "pl":"dla systemu Windows",
         "el":"για Windows",
         "ja":"Windows ダウンロード用",
     }
@@ -77,6 +81,7 @@
         "ru":"для GNU/Linux",
         "de":"für GNU/Linux",
         "nl":"voor GNU/Linux",
+        "pl":"dla systemu GNU/Linux",
         "el":"για GNU/Linux",
         "ja":"GNU/Linux ダウンロード用",
     }
@@ -92,16 +97,19 @@
         "ru":"для Mac OS X",
         "de":"für Mac OS X",
         "nl":"voor Mac OS X",
+        "pl":"dla systemu Mac OS X",
         "el":"για Mac OS X",
         "ja":"Mac OS X ダウンロード用",
     }
 
     var _release_notes = {
-	"en":"Release Notes..."
+	"en":"Release Notes...",
+	"pl":"Informacje o wersji..."
     }
 
     var _upgrade_notes = {
-	"en":"Important Upgrade Notes..."
+	"en":"Important Upgrade Notes...",
+	"pl":"Uwagi o uaktualnieniu..."
     }
 
     var _browse_more_downloads = {
@@ -115,6 +123,7 @@
         "ru":"Другие загрузки...",
         "de":"Mehr downloads...",
         "nl":"Andere downloads...",
+        "pl":"Inne pliki...",
         "el":"Άλλες λήψεις...",
         "ja":"続きを見る…",
     }
@@ -313,6 +322,13 @@
                         <p/>
                         Een van de doelen van Litecoin was om een mining algoritme te leveren dat op hetzelfde moment kan draaien, op dezelfde hardware die gebruikt wordt om bitcoins te minen. Met de opkomst van gespecialiseerde ASICs voor Bitcoin, blijft Litecoin voldoen aan deze doelstellingen. Het is onwaarschijnlijk dat ASIC mining ontwikkeld zal worden voor Litecoin alvorens de valuta op grote schaal gebruikt wordt.
                     </h2> 
+					<% } else if (locale == 'pl') { %>
+                    <h1>Czym jest Lietcoin?</h1>
+                    <h2>
+                        Litecoin to internetowa waluta peer-to-peer umożliwiająca każdemu na świecie dokonywanie błyskawicznych transakcji. Litecoin zapewnia potwierdzenie transakcji w ciągu średnio 2,5 minuty. Jest oparty na tym samym protokole, co Bitcoin z tą różnicą że może być wydobywana efektywnie z użyciem domowego sprzętu. Używa złożonego pamięciowo algorytmu w celu udowodnienia pracy GPU lub CPU, posiadanego przez większość osób. Sieć Litecoin jest zapro­gra­mo­wana by wygenerować 84 miliony jednostek waluty.
+                        <p/>
+						Jednym z celów Litecoin jest dostarczenie algorytmu mogącego działać równocześnie na sprzęcie używanym do wydobywania Bitcoinów. Wraz z powstaniem wyspecjalizowanych układów ASIC Litecoin nadal spełnia te założenia. Zbudowanie ASIC wydobywających Litecoiny zanim waluta będzie powszechnie stosowana jest bardzo mało prawdopodobne.
+                    </h2>
                 <% } else if(locale == 'el') { %>
                     <h1> Τί είναι το Litecoin;</h1>
                     <h2>
@@ -371,7 +387,9 @@
                         <% } else if(locale == 'de') { %>
                             Litecoin-Qt source code on GitHub            
                         <% } else if(locale == 'nl') { %>
-                            Litecoin-Qt broncode voor GitHub
+                            Litecoin-Qt broncode voor GitHub       
+                        <% } else if(locale == 'pl') { %>
+                            Kod źródłowy Litecoin-Qt w&nbsp;serwisie GitHub
                         <% } else if(locale == 'el') { %>
                             Litecoin-Qt πηγαίος κώδικας στο GitHub
                         <% } else if(locale == 'ja') { %>
@@ -513,7 +531,18 @@
                                 </a>
                                 <li>IRC FreeNode network channels <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (voor algemene gebruikers) and <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (voor ontwikkelaars).</li>
                             </ul> 
-                        </h2> 
+                        </h2>
+						<% } else if(locale == 'pl') { %>
+                        <h1>Społeczność</h1>
+                        <h2>Skorzystaj z pomocy rozwijających się społeczności Litecoin:
+                            <ul>
+                                <li><a href="http://forum.litecoin.net" target="_blank">Forum Litecoin</a></li>
+                                <li><a href="http://forum.litecoin.net" target="_blank">Forum Litecoin</a></li>
+                                <li><a href="http://www.reddit.com/r/litecoin" target="_blank">Litecoin na Reddicie</a></li>
+                                <li><a href="https://twitter.com/search?q=litecoin%20-bitcoin&src=typd" target="_blank">Szukaj użytkowników Twittera<a/></li>
+                                <li>Kanały sieci IRC FreeNode <a href="http://webchat.freenode.net/?channels=litecoin" target="_blank" rel="nofollow">#litecoin</a> (dla wszystkich) i <a href="http://webchat.freenode.net/?channels=litecoin-dev" target="_blank" rel="nofollow">#litecoin-dev</a> (dla twórców).</li>
+                            </ul>
+                        </h2>
                      <% } else if(locale == 'el') { %>
                         <h1>Κοινότητα</h1>
                         <h2>Βρείτε υποστήριξη σε έναν συνεχώς αυξανόμενο αριθμό κοινοτήτων για το Litecoin:
@@ -634,6 +663,15 @@
                             <p/>
                             Broncode voor Litecoin-QT aan aanverwante projecten is te vinden op <a href="https://github.com/litecoin-project" target="_blank">GitHub</a>.
                         </h2>
+                    <% } else if(locale == 'pl') { %>
+                        <h1>Zasoby</h1>
+                        <h2>
+                            Ogólne informacje oraz listę usługodawców używających Litecoin znajdziesz na <a href="http://litecoin.info" target="_blank">Litecoin Wiki</a>.
+                            <p/>
+                            Aktualne statystyki sieci można przeglądać pod adresem <a href="http://ltc.block-explorer.com/charts" target="_blank">Litecoin Block Explorer Charts</a>.
+                            <p/>
+                            Kody źródłowe Litecoin-Qt oraz powiązanych projektów są dostępne w&nbsp;serwisie <a href="https://github.com/litecoin-project" target="_blank">GitHub</a>.
+                        </h2>
                     <% } else if(locale == 'el') { %>
                         <h1>Πηγές</h1>
                         <h2>
@@ -714,6 +752,10 @@
                         <h2>
                             Litecoin is een gratis software project uitgebracht onder de MIT/X11 licentie die gebruikers de toestemming geeft de software te draaien, aan te passen, te kopiëren en optioneel ook aangepaste kopieën van de software uit te geven. De software is uitgebracht op een transparante manier die toestaat de binaries en hun daarmee corresponderende codes onafhankelijk te verifiëren. 
                         </h2> 
+                    <% } else if(locale == 'pl') { %>
+                        <h1>Darmowe oprogramowanie</h1>
+                        <h2>Litecoin jest projektem całkowicie darmowym, opubli&shy;kowanym na licencji MIT/X11 która daje możliwość urucha&shy;miania, zmieniania, kopio&shy;wania i&nbsp;dystry&shy;bucji zmodyfi&shy;kowanych kopii oprogra&shy;mowania według uznania. Oprogra&shy;mowanie jest wydawane w&nbsp;przejrzysty sposób umo&shy;żli&shy;wiający niezależną wery&shy;fi&shy;kację plików i odpo&shy;wia&shy;da&shy;jącego im kodu źród&shy;ło&shy;wego.
+                        </h2>
                     <% } else if(locale == 'el') { %>
                         <h1>Ελεύθερο Λογισμικό Ανοικτού Κώδικα</h1> 
                         <h2>
@@ -800,6 +842,11 @@
                             <p/>
                             Bijgevolg krijgen handelaars snellere bevestigingstijden, terwijl ze nog altijd de mogelijkheid hebben om op meer bevestigingen te wachten wanneer zij duurdere producten verkopen.  
                         </h2> 
+                    <% } else if(locale == 'pl') { %>
+                        <h1>Blockchain</h1>
+                        <h2>
+							Litecoin radzi sobie z&nbsp;większą liczbą tran&shy;sa&shy;kcji niż jego konku&shy;rent - Bitcoin. Dzięki częstszemu genero&shy;waniu bloku sieć może utrzymać większą liczbę transakcji bez modyfikacji oprogramowania w przyszłości. <p/>Dzięki temu kupcy otrzymują szybsze potwierdzenia i wciąż mają możliwość oczekiwania na większą ilość potwierdzeń w przypadku większych transakcji.
+                        </h2>
                      <% } else if(locale == 'el') { %>
                         <h1>Blockchain</h1>
                         <h2>
@@ -889,6 +936,11 @@
                             <p/>
                             Dit biedt bescherming tegen portemonnee-stelende virussen en trojans , en zorgt daarnaast ook voor een extra veiligheidscontrole voordat je een betaling verzendt.
                          </h2>
+                    <% } else if(locale == 'pl') { %>
+                        <h1>Szyfrowanie portfela</h1>
+                        <h2>
+                            Szyfrowanie pozwala zabezpieczyć portfel by nikt nie mógł sprawdzić transakcji i stanu Twojego konta. Wymagane jest wprowadzenie hasła przed próbą wydania litecoinów. <p/>Ten mechanizm zabezpiecza portfel przed kradzieżą, wirusami i złośliwym oprogramowaniem oraz zapewnia możliwość sprawdzenia poprawności przed dokonaniem transakcji.
+                        </h2>
                     <% } else if(locale == 'el') { %>
                         <h1>Κρυπτογράφηση Πορτοφολιού</h1>
                         <h2>
@@ -981,6 +1033,13 @@
                             <p/> 
                             Het is hierdoor gepland dat het Litecoin netwerk 84 miljoen litecoins zal produceren, wat vier keer zoveel valutaeenheden als Bitcoin is.
                         </h2> 
+                    <% } else if(locale == 'pl') { %>
+                        <h1>Nagrody za wydobycie</h1>
+                        <h2>
+                            Nagroda za wydobycie wynosi aktualnie 50 jednostek za blok i będzie się zmniejszać o połowę co 4 lata (co 840,000 bloków). 
+                            <p/>
+                            Zaplanowane jest wyprodukowanie 84 milionów litecoinów, czyli 4 razy więcej jednostek niż w przypadku waluty Bitcoin.
+                        </h2>
                     <% } else if(locale == 'el') { %>
                         <h1>Αμοιβή Εξόρυξης</h1>
                         <h2>
